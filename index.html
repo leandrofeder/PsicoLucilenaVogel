@@ -38,6 +38,11 @@
       /* Fundo azuladíssimo, quase branco */
       --white: #ffffff;
       --shadow: rgba(36, 49, 63, 0.08);
+--insta-color: #9b4d73;     /* ameixa terapêutico */
+  --whatsapp-color: #4caf8f;  /* verde acolhedor */
+  --icon-bg: #f4f6f5;
+  --icon-bg-hover: #eef3f1;
+  --text-color: #2e2e2e;
     }
 
 
@@ -766,25 +771,53 @@
       }
 
 .contact-icon {
-  font-size: 2.8rem;
-  margin-bottom: 12px;
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--icon-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+
+  font-size: 2rem;
+  color: var(--text-color);
+
+  transition:
+    background-color 0.4s ease,
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
 }
 
-.contact-icon i {
-  transition: transform 0.3s ease;
-}
-
-.contact-card:hover .contact-icon i {
-  transform: scale(1.15);
+.contact-card:hover .contact-icon {
+  transform: translateY(-2px);
+  background-color: var(--icon-bg-hover);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
 }
 
 .contact-icon.instagram {
-  color: #E1306C;
+  color: var(--insta-color);
 }
 
 .contact-icon.whatsapp {
-  color: #25D366;
+  color: var(--whatsapp-color);
 }
+
+.contact-card:focus-visible {
+  outline: 3px solid rgba(155, 77, 115, 0.4);
+  outline-offset: 6px;
+  border-radius: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .contact-icon {
+    transition: none;
+  }
+}
+.contact-card {
+  padding: 24px;
+}
+
 
     }
   </style>
