@@ -12,6 +12,8 @@
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap"
     rel="stylesheet">
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
   <style>
     * {
       margin: 0;
@@ -762,6 +764,28 @@
       .contact-form-container {
         padding: 30px 20px;
       }
+
+.contact-icon {
+  font-size: 2.8rem;
+  margin-bottom: 12px;
+}
+
+.contact-icon i {
+  transition: transform 0.3s ease;
+}
+
+.contact-card:hover .contact-icon i {
+  transform: scale(1.15);
+}
+
+.contact-icon.instagram {
+  color: #E1306C;
+}
+
+.contact-icon.whatsapp {
+  color: #25D366;
+}
+
     }
   </style>
 </head>
@@ -977,13 +1001,19 @@
 
       <div class="contact-grid">
         <a href="https://www.instagram.com/psicolucilenavogel/" target="_blank" class="contact-card">
-          <div class="contact-icon">📸</div>
+          <div class="contact-icon instagram">
+  <i class="fa-brands fa-instagram"></i>
+</div>
+
           <h3>Instagram</h3>
           <p>Acompanhe conteúdos sobre saúde mental e bem-estar</p>
         </a>
 
         <a href="https://wa.link/s099k9" target="_blank" class="contact-card">
-          <div class="contact-icon">💬</div>
+          <div class="contact-icon whatsapp">
+  <i class="fa-brands fa-whatsapp"></i>
+</div>
+
           <h3>WhatsApp</h3>
           <p>Contato rápido e direto para agendamentos</p>
         </a>
