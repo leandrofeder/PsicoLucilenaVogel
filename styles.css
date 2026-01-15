@@ -32,24 +32,6 @@
     --text-color: #2e2e2e;
 }
 
-
-/* Dark Theme */
-
-html.dark-theme {
-    --primary: #6b92b5;
-    --primary-dark: #4d6d8a;
-    --secondary: #8fa8c7;
-    --accent: #3a4f63;
-    --text: #e8eef3;
-    --text-light: #b8c5d6;
-    --bg-light: #1a1f2e;
-    --bg-dark: #0f1419;
-    --white: #1a1f2e;
-    --shadow: rgba(0, 0, 0, 0.3);
-    --icon-bg: #1f2935;
-    --icon-bg-hover: #252d3a;
-}
-
 html {
     scroll-behavior: smooth;
 }
@@ -59,12 +41,7 @@ body {
     color: var(--text);
     line-height: 1.7;
     overflow-x: hidden;
-    transition: background-color 0.3s ease, color 0.3s ease;
     background: var(--white);
-}
-
-html.dark-theme body {
-    background: var(--bg-dark);
 }
 
 
@@ -79,10 +56,6 @@ html.dark-theme body {
     box-shadow: 0 2px 20px var(--shadow);
     z-index: 1000;
     transition: all 0.3s ease;
-}
-
-html.dark-theme .navbar {
-    background: rgba(15, 20, 25, 0.98);
 }
 
 .nav-container {
@@ -104,46 +77,12 @@ html.dark-theme .navbar {
     color: var(--primary-dark);
 }
 
-html.dark-theme .logo {
-    color: var(--text);
-}
-
 .logo img {
     width: 45px;
     height: 45px;
     border-radius: 50%;
     object-fit: cover;
     border: 2px solid var(--primary);
-}
-
-
-/* Theme Toggle Button */
-
-.theme-toggle {
-    background: none;
-    border: 2px solid var(--primary);
-    color: var(--primary);
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.1rem;
-    transition: all 0.3s ease;
-    padding: 0;
-}
-
-.theme-toggle:hover {
-    background: var(--primary);
-    color: var(--white);
-    transform: scale(1.05);
-}
-
-.nav-theme-item {
-    display: flex;
-    align-items: center;
 }
 
 .nav-links {
@@ -209,10 +148,6 @@ html.dark-theme .logo {
     align-items: center;
     justify-content: center;
     transition: background 0.3s ease;
-}
-
-html.dark-theme .hero {
-    background: linear-gradient(135deg, #1a2332 0%, #0f1419 100%);
 }
 
 .hero-content {
@@ -581,11 +516,6 @@ html.dark-theme .hero {
     color: var(--text);
     transition: all 0.3s ease;
     background: var(--bg-light);
-}
-
-html.dark-theme .form-group input,
-html.dark-theme .form-group textarea {
-    border-color: #3a4f63;
 }
 
 .form-group input:focus,
@@ -980,11 +910,5 @@ footer p {
     }
     .method-subsection h3 {
         font-size: 1.5rem;
-    }
-    .theme-toggle {
-        margin-right: 10px;
-        width: 36px;
-        height: 36px;
-        font-size: 1rem;
     }
 }

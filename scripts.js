@@ -124,49 +124,4 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Atualizar ano do footer
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year').textContent = new Date().getFullYear();
-    initTheme();
 });
-
-// Dark Theme Management
-function toggleTheme() {
-    const html = document.documentElement;
-    const isDarkTheme = html.classList.contains('dark-theme');
-
-    if (isDarkTheme) {
-        html.classList.remove('dark-theme');
-        localStorage.setItem('theme', 'light');
-        updateThemeIcon(false);
-    } else {
-        html.classList.add('dark-theme');
-        localStorage.setItem('theme', 'dark');
-        updateThemeIcon(true);
-    }
-}
-
-function initTheme() {
-    // Verificar preferência salva ou preferência do sistema
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const isDarkTheme = savedTheme === 'dark' || (savedTheme === null && prefersDark);
-
-    if (isDarkTheme) {
-        document.documentElement.classList.add('dark-theme');
-        updateThemeIcon(true);
-    } else {
-        updateThemeIcon(false);
-    }
-}
-
-function updateThemeIcon(isDark) {
-    const themeToggle = document.querySelector('.theme-toggle i');
-    if (themeToggle) {
-        if (isDark) {
-            themeToggle.classList.remove('fa-moon');
-            themeToggle.classList.add('fa-sun');
-        } else {
-            themeToggle.classList.remove('fa-sun');
-            themeToggle.classList.add('fa-moon');
-        }
-    }
-}
