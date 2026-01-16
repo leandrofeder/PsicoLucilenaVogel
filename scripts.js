@@ -58,6 +58,14 @@ async function handleSubmit(event) {
             formMessage.className = 'form-message success';
             formMessage.style.display = 'block';
 
+            // Rastrear envio de formulário no Google Analytics
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submission', {
+                    form_name: 'contact_form',
+                    status: 'success'
+                });
+            }
+
             // Resetar formulário
             form.reset();
         } else {
@@ -68,6 +76,14 @@ async function handleSubmit(event) {
         formMessage.textContent = 'Erro ao enviar mensagem. Por favor, tente novamente ou use o WhatsApp.';
         formMessage.className = 'form-message error';
         formMessage.style.display = 'block';
+
+        // Rastrear erro no Google Analytics
+        if (typeof gtag !== 'undefined') {
+            gtag('event', 'form_submission', {
+                form_name: 'contact_form',
+                status: 'error'
+            });
+        }
     }
 
     // Reabilitar botão
@@ -107,21 +123,87 @@ document.addEventListener('click', function(event) {
     }
 });
 
-// Scroll suave
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
-    });
+// Sistema de Roteamento
+const routes = {
+    '/': 'inicio',
+    '/inicio': 'inicio',
+    '/sobre': 'sobre',
+    '/faq': 'faq',
+    '/metodo': 'metodo',
+    '/contato': 'contato'
+};
+
+function handleNavClick(event, path) {
+    event.preventDefault();
+    window.history.pushState({ path }, '', path);
+    navigateTo(path);
+
+    // Rastreamento de navegação no Google Analytics
+    if (typeof gtag !== 'undefined') {
+        gtag('event', 'page_view', {
+            page_path: path,
+            page_title: document.title
+        });
+    }
+}
+
+function navigateTo(path) {
+    const sectionId = routes[path] || 'inicio';
+    const targetSection = document.getElementById(sectionId);
+
+    if (targetSection) {
+        targetSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    }
+}
+
+// Lidar com botão voltar do navegador
+window.addEventListener('popstate', (event) => {
+    const path = window.location.pathname || '/';
+    navigateTo(path);
 });
 
-// Atualizar ano do footer
+// Inicializar rota ao carregar a página
 document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Verifica se veio de um 404 redirect com query parameter (GitHub Pages)
+    const urlParams = new URLSearchParams(window.location.search);
+    const routeParam = urlParams.get('route');
+
+    let currentPath = window.location.pathname || '/';
+
+    // Se vier com parâmetro route (do 404.html), usa esse
+    if (routeParam && routes['/' + routeParam]) {
+        currentPath = '/' + routeParam;
+        // Limpa a URL removendo o query parameter
+        window.history.replaceState({ path: currentPath }, '', currentPath);
+    }
+
+    // Se não for a raiz e tiver rota válida, navega
+    if (currentPath !== '/' && routes[currentPath]) {
+        setTimeout(() => {
+            navigateTo(currentPath);
+        }, 100);
+    } else if (currentPath === '/') {
+        window.history.replaceState({ path: '/' }, '', '/');
+    }
+});
+
+// Também navegar se a página foi carregada com URL específica
+window.addEventListener('load', function() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const routeParam = urlParams.get('route');
+
+    let currentPath = window.location.pathname || '/';
+
+    if (routeParam && routes['/' + routeParam]) {
+        currentPath = '/' + routeParam;
+    }
+
+    if (currentPath !== '/' && routes[currentPath]) {
+        navigateTo(currentPath);
+    }
 });

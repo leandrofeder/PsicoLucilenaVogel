@@ -1,13 +1,34 @@
+# robots.txt para Psicóloga Lucilena Vogel
+# Otimizado para melhor indexação nos buscadores
+
 User-agent: *
 Allow: /
 Disallow: /admin/
 Disallow: /private/
-
-Sitemap: https://www.psicolucilenavogel.com.br/sitemap.xml
+Disallow: /*.pdf$
+Crawl-delay: 1
 
 # Google
 User-agent: Googlebot
 Allow: /
+Crawl-delay: 0
+
+# Bing
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Permitir indexação de arquivos estáticos
+User-agent: *
+Allow: /assets/
+Allow: /scripts.js
+Allow: /styles.css
+
+# Sitemap
+Sitemap: https://www.psicolucilenavogel.com.br/sitemap.xml
+
+# Tempo de visita preferido
+Visit-time: 0600-0900
 
 # Bing
 User-agent: Bingbot

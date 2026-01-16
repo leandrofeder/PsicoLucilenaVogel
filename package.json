@@ -1,0 +1,18 @@
+{
+    "name": "psicolucilenavogel-site",
+    "version": "1.0.0",
+    "description": "Site da Psicóloga Lucilena Vogel - Terapia Cognitivo-Comportamental",
+    "main": "server.js",
+    "scripts": {
+        "start": "node server.js",
+        "dev": "node server.js"
+    },
+    "keywords": [
+        "psicologia",
+        "terapia",
+        "tcc",
+        "blumenau"
+    ],
+    "author": "Lucilena Vogel",
+    "license": "MIT"
+}

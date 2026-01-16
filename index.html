@@ -12,18 +12,24 @@
     <meta name="keywords" content="psicóloga Blumenau, terapia cognitivo-comportamental, TCC online, psicólogo online, terapia ansiedade, psicologia clínica">
     <meta name="author" content="Psicóloga Lucilena Vogel">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
+    <meta name="language" content="pt-BR">
+    <meta name="revisit-after" content="7 days">
 
     <!-- Open Graph para compartilhamento em redes sociais -->
-    <meta property="og:title" content="Psicóloga Lucilena Vogel | TCC em Blumenau">
+    <meta property="og:title" content="Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental em Blumenau">
     <meta property="og:description" content="Atendimento psicológico online com Terapia Cognitivo-Comportamental. Especialista em ansiedade, depressão e stress.">
     <meta property="og:url" content="https://www.psicolucilenavogel.com.br">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png">
+    <meta property="og:image:width" content="600">
+    <meta property="og:image:height" content="600">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Psicóloga Lucilena Vogel">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Psicóloga Lucilena Vogel | TCC em Blumenau">
+    <meta name="twitter:title" content="Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental em Blumenau">
     <meta name="twitter:description" content="Atendimento psicológico online com Terapia Cognitivo-Comportamental">
     <meta name="twitter:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png">
 
@@ -32,6 +38,11 @@
 
     <!-- Identidade visual -->
     <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Preload para fonts críticas -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -63,14 +74,14 @@
             "@type": "LocalBusiness",
             "@id": "https://www.psicolucilenavogel.com.br",
             "name": "Psicóloga Lucilena Vogel",
+            "image": "https://www.psicolucilenavogel.com.br/assets/logo/logo.png",
             "description": "Psicóloga especialista em Terapia Cognitivo-Comportamental (TCC) oferecendo atendimento online em Blumenau.",
             "url": "https://www.psicolucilenavogel.com.br",
-            "logo": "https://www.psicolucilenavogel.com.br/assets/logo/logo.png",
-            "image": {
+            "logo": {
                 "@type": "ImageObject",
                 "url": "https://www.psicolucilenavogel.com.br/assets/logo/logo.png",
-                "width": 300,
-                "height": 300
+                "width": 600,
+                "height": 600
             },
             "address": {
                 "@type": "PostalAddress",
@@ -91,7 +102,13 @@
                 "Ansiedade",
                 "Depressão",
                 "Stress",
-                "Saúde Mental"
+                "Saúde Mental",
+                "Psicoterapia",
+                "Bem-estar emocional",
+                "Mulheres",
+                "Adolescentes",
+                "Mães",
+                "Adultos"
             ],
             "jobTitle": "Psicóloga",
             "sameAs": [
@@ -133,6 +150,116 @@
         }
     </script>
 
+    <!-- Breadcrumb Schema para melhor navegação no Google -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            "itemListElement": [{
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://www.psicolucilenavogel.com.br/inicio"
+            }, {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Sobre mim",
+                "item": "https://www.psicolucilenavogel.com.br/sobre"
+            }, {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Dúvidas",
+                "item": "https://www.psicolucilenavogel.com.br/faq"
+            }, {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Método",
+                "item": "https://www.psicolucilenavogel.com.br/metodo"
+            }, {
+                "@type": "ListItem",
+                "position": 5,
+                "name": "Contato",
+                "item": "https://www.psicolucilenavogel.com.br/contato"
+            }]
+        }
+    </script>
+
+    <!-- Professional/Provider Schema -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "MedicalBusiness",
+            "@id": "https://www.psicolucilenavogel.com.br",
+            "name": "Psicóloga Lucilena Vogel",
+            "description": "Psicóloga clínica especialista em Terapia Cognitivo-Comportamental (TCC) para tratamento de ansiedade, depressão e stress. Atendimento online e presencial em Blumenau, SC.",
+            "url": "https://www.psicolucilenavogel.com.br",
+            "telephone": "",
+            "email": "psilucilena@gmail.com",
+            "image": "https://www.psicolucilenavogel.com.br/assets/logo/logo.png",
+            "logo": {
+                "@type": "ImageObject",
+                "url": "https://www.psicolucilenavogel.com.br/assets/logo/logo.png",
+                "width": 600,
+                "height": 600
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Blumenau",
+                "addressRegion": "SC",
+                "postalCode": "89010-000",
+                "addressCountry": "BR"
+            },
+            "areaServed": [{
+                "@type": "City",
+                "name": "Blumenau"
+            }, {
+                "@type": "State",
+                "name": "Santa Catarina"
+            }, {
+                "@type": "Country",
+                "name": "Brasil"
+            }],
+            "medicalSpecialty": "Psychology",
+            "knowsAbout": [
+                "Terapia Cognitivo-Comportamental",
+                "TCC",
+                "Ansiedade",
+                "Depressão",
+                "Transtorno de Ansiedade",
+                "Transtorno Depressivo",
+                "Stress",
+                "Saúde Mental",
+                "Psicoterapia",
+                "Bem-estar emocional"
+            ],
+            "sameAs": [
+                "https://www.instagram.com/psicolucilenavogel"
+            ]
+        }
+    </script>
+
+    <!-- Service Schema para serviços específicos -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "LocalBusiness",
+            "@id": "https://www.psicolucilenavogel.com.br#service-tcc",
+            "name": "Terapia Cognitivo-Comportamental Online",
+            "description": "Atendimento psicológico online com Terapia Cognitivo-Comportamental (TCC) para adultos e adolescentes. Especialista em ansiedade, depressão e gerenciamento de stress.",
+            "provider": {
+                "@type": "Person",
+                "name": "Lucilena Vogel",
+                "credential": "CRP 12/25849"
+            },
+            "areaServed": "BR",
+            "availableChannel": {
+                "@type": "ServiceChannel",
+                "serviceType": "Online Services",
+                "availableLanguage": "pt-BR"
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -152,11 +279,11 @@
             </div>
 
             <ul class="nav-links" id="navLinks">
-                <li><a href="#inicio" onclick="closeMenu()">Início</a></li>
-                <li><a href="#sobre" onclick="closeMenu()">Sobre mim</a></li>
-                <li><a href="#faq" onclick="closeMenu()">Dúvidas</a></li>
-                <li><a href="#metodo" onclick="closeMenu()">Método de atendimento</a></li>
-                <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
+                <li><a href="/inicio" onclick="handleNavClick(event, '/inicio'); closeMenu()">Início</a></li>
+                <li><a href="/sobre" onclick="handleNavClick(event, '/sobre'); closeMenu()">Sobre mim</a></li>
+                <li><a href="/faq" onclick="handleNavClick(event, '/faq'); closeMenu()">Dúvidas</a></li>
+                <li><a href="/metodo" onclick="handleNavClick(event, '/metodo'); closeMenu()">Método de atendimento</a></li>
+                <li><a href="/contato" onclick="handleNavClick(event, '/contato'); closeMenu()">Contato</a></li>
             </ul>
         </div>
     </nav>
@@ -171,13 +298,13 @@
                     Um espaço seguro para reflexão, autoconhecimento e desenvolvimento pessoal. A psicoterapia auxilia no cuidado com a saúde emocional e na construção de um relacionamento mais leve consigo mesma. Aqui, você é convidada a olhar para a sua história com respeito,
                     acolhimento e responsabilidade.
                 </p>
-                <a href="#contato" class="btn-primary">Agendar atendimento</a>
-                <a href="#sobre" class="btn-secondary">Saiba mais</a>
+                <a href="/contato" onclick="handleNavClick(event, '/contato')" class="btn-primary">Agendar atendimento</a>
+                <a href="/sobre" onclick="handleNavClick(event, '/sobre')" class="btn-secondary">Saiba mais</a>
             </div>
 
             <div class="hero-image">
                 <div class="hero-decoration"></div>
-                <img src="assets/profile/lucilenaVogel_1.png" alt="Psicóloga Lucilena Vogel" class="hero-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Ccircle cx=%22200%22 cy=%22200%22 r=%22180%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%22120%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
+                <img src="assets/profile/lucilenaVogel_1.png" alt="Psicóloga Lucilena Vogel oferecendo atendimento de terapia cognitivo-comportamental" class="hero-img" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22400%22%3E%3Ccircle cx=%22200%22 cy=%22200%22 r=%22180%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%22120%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
             </div>
         </div>
     </section>
@@ -191,7 +318,7 @@
             </div>
 
             <div class="about-content">
-                <img src="assets/profile/lucilenaVogel_2.png" alt="Lucilena Vogel" class="about-img" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22%3E%3Crect width=%22400%22 height=%22500%22 fill=%22%2387a8a4%22 rx=%2220%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%22100%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
+                <img src="assets/profile/lucilenaVogel_2.png" alt="Lucilena Vogel - Psicóloga especialista em Terapia Cognitivo-Comportamental em Blumenau" class="about-img" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22%3E%3Crect width=%22400%22 height=%22500%22 fill=%22%2387a8a4%22 rx=%2220%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%22100%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
 
                 <div class="about-text">
                     <h3>Olá, eu sou Lucilena Vogel, psicóloga clínica (CRP 12/25849).</h3>

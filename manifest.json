@@ -1,0 +1,49 @@
+{
+    "name": "Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental em Blumenau",
+    "short_name": "Lucilena Vogel - Psicóloga",
+    "description": "Atendimento psicológico online com Terapia Cognitivo-Comportamental (TCC) em Blumenau. Especialista em ansiedade, depressão e stress.",
+    "start_url": "https://www.psicolucilenavogel.com.br",
+    "scope": "https://www.psicolucilenavogel.com.br",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "theme_color": "#87a8a4",
+    "background_color": "#ffffff",
+    "icons": [{
+            "src": "assets/logo/logo.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/logo/logo.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "assets/logo/logo.png",
+            "sizes": "600x600",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ],
+    "screenshots": [{
+            "src": "assets/logo/logo.png",
+            "sizes": "540x720",
+            "type": "image/png",
+            "form_factor": "narrow"
+        },
+        {
+            "src": "assets/logo/logo.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide"
+        }
+    ],
+    "categories": ["health", "medical"],
+    "screenshots_alternate": [{
+        "src": "assets/logo/logo.png",
+        "sizes": "600x600",
+        "type": "image/png"
+    }]
+}

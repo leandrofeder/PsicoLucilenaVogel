@@ -1,0 +1,30 @@
+# GitHub Pages Configuration for Jekyll
+# Esta configuração permite que o SPA roteamento funcione corretamente
+
+# Site settings
+title: "Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental"
+description: "Atendimento psicológico online com Terapia Cognitivo-Comportamental em Blumenau"
+url: "https://psicolucilenavogel.com.br"
+
+# Build settings
+markdown: kramdown
+theme: null
+
+# Include files
+include:
+  - _headers
+  - 404.html
+
+# Exclude files
+exclude:
+  - README.md
+  - package.json
+  - server.js
+  - node_modules
+  - .gitignore
+
+# Output settings
+output: web
+
+# Permalinks
+permalink: /:path/
