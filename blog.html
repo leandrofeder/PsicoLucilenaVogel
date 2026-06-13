@@ -446,7 +446,7 @@
                     const posts = await Promise.all(
                         POST_SLUGS.map(s => fetchPost(s).catch(() => null))
                     );
-                    renderList(posts.filter(Boolean).sort((a, b) => b.date ? .localeCompare(a.date)));
+                    renderList(posts.filter(Boolean).sort((a, b) => b.date ?.localeCompare(a.date)));
                     window.history.pushState({
                         slug: null
                     }, '', '/blog');
