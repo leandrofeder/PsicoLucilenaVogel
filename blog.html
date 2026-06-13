@@ -1,0 +1,67 @@
+<h1>Blog</h1>
+
+<div id="posts"></div>
+
+<script>
+    async function carregarPosts() {
+        const arquivos = [
+            "como-lidar-com-a-ansiedade"
+        ];
+
+        const container = document.getElementById("posts");
+
+        for (const slug of arquivos) {
+            const response = await fetch(`posts/${slug}.json`);
+            const post = await response.json();
+
+            container.innerHTML += `
+            <article class="post-card">
+                <h2>
+                    <a href="blog.html?post=${slug}">
+                        ${post.title}
+                    </a>
+                </h2>
+
+                <small>${post.date}</small>
+
+                <p>${post.excerpt}</p>
+
+                <a href="blog.html?post=${slug}">
+                    Ler mais →
+                </a>
+            </article>
+
+            <hr>
+        `;
+        }
+    }
+
+    carregarPosts();
+</script>
+
+<script>
+    async function carregarArtigo() {
+        const params = new URLSearchParams(window.location.search);
+
+        const slug = params.get("post");
+
+        if (!slug) {
+            return;
+        }
+
+        const response = await fetch(`posts/${slug}.json`);
+        const post = await response.json();
+
+        document.body.innerHTML = `
+        <a href="blog.html">← Voltar para o blog</a>
+
+        <h1>${post.title}</h1>
+
+        <small>${post.date}</small>
+
+        ${post.content}
+    `;
+    }
+
+    carregarArtigo();
+</script>
