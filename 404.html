@@ -5,27 +5,32 @@
     <meta charset="UTF-8" />
     <title>Redirecionando...</title>
     <script>
-        // GitHub Pages redireciona automaticamente URLs não encontradas para 404.html
-        // Esta página extrai a rota e redireciona para index.html com a rota como parâmetro
-
         (function() {
-            // Obtém o caminho da URL
             const path = window.location.pathname;
-
-            // Remove a barra inicial e extrai o segmento (ex: /sobre → sobre)
             const segments = path.split('/').filter(Boolean);
-            const route = segments[segments.length - 1];
 
-            // Rotas válidas
-            const validRoutes = ['inicio', 'sobre', 'faq', 'metodo', 'contato'];
+            // Rotas do site principal (seções do index.html)
+            const mainRoutes = ['inicio', 'sobre', 'faq', 'metodo', 'contato'];
 
-            // Se for uma rota válida, redireciona para index.html com a rota como parâmetro
-            if (route && validRoutes.includes(route)) {
-                window.location.replace('/index.html?route=' + route);
-            } else {
-                // Caso contrário, vai para a página inicial
-                window.location.replace('/');
+            // ── Rota de blog: /blog ou /blog/slug ────────────────────────────────
+            if (segments[0] === 'blog') {
+                const slug = segments[1] || '';
+                const dest = slug ?
+                    '/blog.html?post=' + encodeURIComponent(slug) :
+                    '/blog.html';
+                window.location.replace(dest);
+                return;
             }
+
+            // ── Rotas do site principal ───────────────────────────────────────────
+            const route = segments[segments.length - 1];
+            if (route && mainRoutes.includes(route)) {
+                window.location.replace('/index.html?route=' + route);
+                return;
+            }
+
+            // ── Fallback: página inicial ──────────────────────────────────────────
+            window.location.replace('/');
         })();
     </script>
 </head>

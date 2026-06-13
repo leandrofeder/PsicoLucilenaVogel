@@ -1,67 +1,491 @@
-<h1>Blog</h1>
+<!DOCTYPE html>
+<html lang="pt-BR">
 
-<div id="posts"></div>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<script>
-    async function carregarPosts() {
-        const arquivos = [
-            "como-lidar-com-a-ansiedade"
+    <title>Blog | Psicóloga Lucilena Vogel</title>
+    <meta name="description" content="Artigos sobre saúde mental, ansiedade, depressão e bem-estar emocional. Conteúdo da Psicóloga Lucilena Vogel.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.psicolucilenavogel.com.br/blog">
+
+    <meta property="og:title" content="Blog | Psicóloga Lucilena Vogel">
+    <meta property="og:description" content="Artigos sobre saúde mental, ansiedade e bem-estar emocional.">
+    <meta property="og:url" content="https://www.psicolucilenavogel.com.br/blog">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png">
+    <meta property="og:locale" content="pt_BR">
+
+    <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <link rel="manifest" href="manifest.json">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3WPG6992F"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-Y3WPG6992F');
+    </script>
+
+    <style>
+        /* ── BLOG LAYOUT ── */
+        
+        .blog-hero {
+            background: linear-gradient(135deg, #e8f4f3 0%, #f8f9fa 100%);
+            padding: 140px 30px 60px;
+            text-align: center;
+        }
+        
+        .blog-hero h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        
+        .blog-hero p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 560px;
+            margin: auto;
+        }
+        /* ── LISTA DE POSTS ── */
+        
+        .blog-list {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 70px 30px 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+        
+        .post-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 36px 40px;
+            box-shadow: 0 6px 30px var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+        
+        .post-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+        }
+        
+        .post-meta {
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+        
+        .post-card h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+        
+        .post-card p {
+            color: var(--text-light);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 18px;
+        }
+        
+        .post-link {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: gap 0.2s ease;
+        }
+        
+        .post-card:hover .post-link {
+            gap: 10px;
+        }
+        
+        .blog-empty {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.05rem;
+            padding: 60px 0;
+        }
+        /* ── ARTIGO INDIVIDUAL ── */
+        
+        .article-wrapper {
+            max-width: 760px;
+            margin: 0 auto;
+            padding: 120px 30px 100px;
+        }
+        
+        .article-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--primary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-decoration: none;
+            margin-bottom: 40px;
+            transition: gap 0.2s ease;
+        }
+        
+        .article-back:hover {
+            gap: 12px;
+        }
+        
+        .article-meta {
+            font-size: 0.82rem;
+            color: var(--primary);
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            margin-bottom: 14px;
+        }
+        
+        .article-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            color: var(--primary-dark);
+            line-height: 1.2;
+            margin-bottom: 10px;
+        }
+        
+        .article-author {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-bottom: 40px;
+        }
+        
+        .article-divider {
+            border: none;
+            border-top: 2px solid var(--accent);
+            margin-bottom: 40px;
+        }
+        
+        .article-body {
+            font-size: 1.07rem;
+            color: var(--text);
+            line-height: 1.9;
+        }
+        
+        .article-body p {
+            margin-bottom: 24px;
+        }
+        
+        .article-body h2,
+        .article-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            color: var(--primary-dark);
+            margin: 36px 0 16px;
+        }
+        
+        .article-body h2 {
+            font-size: 2rem;
+        }
+        
+        .article-body h3 {
+            font-size: 1.5rem;
+        }
+        
+        .article-body ul,
+        .article-body ol {
+            padding-left: 24px;
+            margin-bottom: 24px;
+        }
+        
+        .article-body li {
+            margin-bottom: 8px;
+        }
+        
+        .article-body blockquote {
+            border-left: 4px solid var(--primary);
+            padding: 16px 24px;
+            margin: 30px 0;
+            background: var(--bg-light);
+            border-radius: 0 12px 12px 0;
+            color: var(--text-light);
+            font-style: italic;
+        }
+        /* ── LOADING ── */
+        
+        .blog-loading {
+            text-align: center;
+            padding: 80px 30px;
+            color: var(--text-light);
+        }
+        
+        .blog-loading i {
+            font-size: 2rem;
+            color: var(--primary);
+            animation: spin 1s linear infinite;
+            display: block;
+            margin-bottom: 16px;
+        }
+        
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        /* ── ERROR ── */
+        
+        .blog-error {
+            text-align: center;
+            padding: 80px 30px;
+        }
+        
+        .blog-error i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: block;
+        }
+        
+        .blog-error h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+        }
+        
+        .blog-error p {
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+        /* ── RESPONSIVE ── */
+        
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2.2rem;
+            }
+            .post-card {
+                padding: 28px 24px;
+            }
+            .post-card h2 {
+                font-size: 1.5rem;
+            }
+            .article-title {
+                font-size: 2.2rem;
+            }
+            .article-wrapper {
+                padding: 100px 20px 80px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
+                    <img src="assets/logo/logo.png" alt="Logo Lucilena Vogel" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%2220%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
+                    <span>Psicóloga Lucilena Vogel</span>
+                </a>
+            </div>
+
+            <div class="menu-toggle" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/#inicio" onclick="closeMenu()">Início</a></li>
+                <li><a href="/blog" onclick="closeMenu()">Blog</a></li>
+                <li><a href="/#sobre" onclick="closeMenu()">Sobre mim</a></li>
+                <li><a href="/#faq" onclick="closeMenu()">Dúvidas</a></li>
+                <li><a href="/#metodo" onclick="closeMenu()">Método de atendimento</a></li>
+                <li><a href="/#contato" onclick="closeMenu()">Contato</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- CONTEÚDO DINÂMICO -->
+    <main id="blog-main">
+        <div class="blog-loading">
+            <i class="fa-solid fa-circle-notch"></i> Carregando...
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <p>
+            © <span id="year"></span> – Lucilena Vogel Pitz Feder – CRP 12/25849 – Todos os direitos reservados
+        </p>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // ── ÍNDICE DE POSTS ──────────────────────────────────────────────────────
+        // Adicione novos slugs aqui para que apareçam na listagem.
+        const POST_SLUGS = [
+            'como-lidar-com-a-ansiedade'
+            // 'outro-post-aqui',
         ];
 
-        const container = document.getElementById("posts");
+        // ── UTILITÁRIOS ──────────────────────────────────────────────────────────
+        function formatDate(dateStr) {
+            if (!dateStr) return '';
+            const [y, m, d] = dateStr.split('-');
+            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            return `${parseInt(d)} de ${months[parseInt(m) - 1]} de ${y}`;
+        }
 
-        for (const slug of arquivos) {
-            const response = await fetch(`posts/${slug}.json`);
-            const post = await response.json();
+        async function fetchPost(slug) {
+            const res = await fetch(`/posts/${slug}.json`);
+            if (!res.ok) throw new Error(`Post "${slug}" não encontrado.`);
+            const post = await res.json();
+            post.slug = slug;
+            return post;
+        }
 
-            container.innerHTML += `
-            <article class="post-card">
-                <h2>
-                    <a href="blog.html?post=${slug}">
-                        ${post.title}
+        // ── RENDERIZADORES ───────────────────────────────────────────────────────
+        function renderList(posts) {
+            const main = document.getElementById('blog-main');
+
+            document.title = 'Blog | Psicóloga Lucilena Vogel';
+
+            if (posts.length === 0) {
+                main.innerHTML = `
+                    <div class="blog-hero">
+                        <h1>Blog</h1>
+                        <p>Artigos sobre saúde mental, bem-estar emocional e autoconhecimento.</p>
+                    </div>
+                    <div class="blog-list">
+                        <p class="blog-empty">Nenhum artigo publicado ainda. Volte em breve!</p>
+                    </div>`;
+                return;
+            }
+
+            const cards = posts.map(p => `
+                <a href="/blog/${p.slug}" class="post-card" onclick="handleBlogNav(event, '${p.slug}')">
+                    <div class="post-meta">${formatDate(p.date)}</div>
+                    <h2>${p.title}</h2>
+                    <p>${p.excerpt}</p>
+                    <span class="post-link">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                </a>`).join('');
+
+            main.innerHTML = `
+                <div class="blog-hero">
+                    <h1>Blog</h1>
+                    <p>Artigos sobre saúde mental, bem-estar emocional e autoconhecimento.</p>
+                </div>
+                <div class="blog-list">${cards}</div>`;
+        }
+
+        function renderArticle(post) {
+            const main = document.getElementById('blog-main');
+
+            document.title = `${post.title} | Psicóloga Lucilena Vogel`;
+
+            main.innerHTML = `
+                <div class="article-wrapper">
+                    <a href="/blog" class="article-back" onclick="handleBlogNav(event, null)">
+                        <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
                     </a>
-                </h2>
-
-                <small>${post.date}</small>
-
-                <p>${post.excerpt}</p>
-
-                <a href="blog.html?post=${slug}">
-                    Ler mais →
-                </a>
-            </article>
-
-            <hr>
-        `;
-        }
-    }
-
-    carregarPosts();
-</script>
-
-<script>
-    async function carregarArtigo() {
-        const params = new URLSearchParams(window.location.search);
-
-        const slug = params.get("post");
-
-        if (!slug) {
-            return;
+                    <div class="article-meta">${formatDate(post.date)}${post.author ? ' · ' + post.author : ''}</div>
+                    <h1 class="article-title">${post.title}</h1>
+                    <hr class="article-divider">
+                    <div class="article-body">${post.content}</div>
+                </div>`;
         }
 
-        const response = await fetch(`posts/${slug}.json`);
-        const post = await response.json();
+        function renderError(msg) {
+            const main = document.getElementById('blog-main');
+            main.innerHTML = `
+                <div class="article-wrapper">
+                    <div class="blog-error">
+                        <i class="fa-regular fa-face-sad-tear"></i>
+                        <h2>Artigo não encontrado</h2>
+                        <p>${msg}</p>
+                        <a href="/blog" class="btn-primary" onclick="handleBlogNav(event, null)">Ver todos os artigos</a>
+                    </div>
+                </div>`;
+        }
 
-        document.body.innerHTML = `
-        <a href="blog.html">← Voltar para o blog</a>
+        // ── NAVEGAÇÃO ────────────────────────────────────────────────────────────
+        async function loadBlog(slug) {
+            const main = document.getElementById('blog-main');
+            main.innerHTML = `<div class="blog-loading"><i class="fa-solid fa-circle-notch"></i>Carregando...</div>`;
 
-        <h1>${post.title}</h1>
+            try {
+                if (slug) {
+                    // Exibe artigo individual
+                    const post = await fetchPost(slug);
+                    renderArticle(post);
+                    window.history.pushState({
+                        slug
+                    }, '', `/blog/${slug}`);
+                } else {
+                    // Exibe lista de posts
+                    const posts = await Promise.all(
+                        POST_SLUGS.map(s => fetchPost(s).catch(() => null))
+                    );
+                    renderList(posts.filter(Boolean).sort((a, b) => b.date ? .localeCompare(a.date)));
+                    window.history.pushState({
+                        slug: null
+                    }, '', '/blog');
+                }
+            } catch (err) {
+                renderError(err.message || 'Não foi possível carregar o conteúdo.');
+            }
+        }
 
-        <small>${post.date}</small>
+        function handleBlogNav(event, slug) {
+            event.preventDefault();
+            loadBlog(slug);
+        }
 
-        ${post.content}
-    `;
-    }
+        // Botão voltar do navegador
+        window.addEventListener('popstate', () => {
+            const slug = getSlugFromPath();
+            loadBlog(slug || null);
+        });
 
-    carregarArtigo();
-</script>
+        function getSlugFromPath() {
+            // Suporta /blog, /blog/, /blog/slug, /blog.html?post=slug (legado)
+            const path = window.location.pathname;
+            const params = new URLSearchParams(window.location.search);
+
+            // Legado: ?post=slug
+            if (params.get('post')) return params.get('post');
+
+            // /blog/slug
+            const match = path.match(/\/blog\/([^/]+)/);
+            return match ? match[1] : null;
+        }
+
+        // ── INICIALIZAÇÃO ────────────────────────────────────────────────────────
+        (function init() {
+            const slug = getSlugFromPath();
+            loadBlog(slug || null);
+        })();
+    </script>
+</body>
+
+</html>
