@@ -195,8 +195,12 @@ body {
 .hero-img {
     width: 100%;
     max-width: 380px;
-    height: 380px;
-    border-radius: 50%;
+    height: auto;
+    /* ← FIXO: altura automática */
+    aspect-ratio: 3 / 4;
+    /* ← NOVO: mantém proporção */
+    border-radius: 20px;
+    /* ← FIXO: bordas arredondadas (não circular) */
     object-fit: cover;
     box-shadow: 0 20px 60px rgba(135, 168, 164, 0.3);
     border: 8px solid var(--white);
@@ -776,7 +780,8 @@ footer p {
     }
     .hero-img {
         max-width: 300px;
-        height: 300px;
+        height: auto;
+        aspect-ratio: 3/4;
     }
     .hero-decoration {
         width: 340px;
