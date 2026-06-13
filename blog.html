@@ -5,17 +5,43 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- SEO base (atualizado dinamicamente via JS para cada artigo) -->
     <title>Blog | Psicóloga Lucilena Vogel</title>
     <meta name="description" content="Artigos sobre saúde mental, ansiedade, depressão e bem-estar emocional. Conteúdo da Psicóloga Lucilena Vogel.">
+    <meta name="author" content="Lucilena Vogel">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://www.psicolucilenavogel.com.br/blog">
+    <link rel="canonical" href="https://www.psicolucilenavogel.com.br/blog" id="canonical">
 
-    <meta property="og:title" content="Blog | Psicóloga Lucilena Vogel">
-    <meta property="og:description" content="Artigos sobre saúde mental, ansiedade e bem-estar emocional.">
-    <meta property="og:url" content="https://www.psicolucilenavogel.com.br/blog">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png">
+    <!-- Open Graph (atualizado dinamicamente) -->
+    <meta property="og:title" content="Blog | Psicóloga Lucilena Vogel" id="og-title">
+    <meta property="og:description" content="Artigos sobre saúde mental, ansiedade e bem-estar emocional." id="og-desc">
+    <meta property="og:url" content="https://www.psicolucilenavogel.com.br/blog" id="og-url">
+    <meta property="og:type" content="website" id="og-type">
+    <meta property="og:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png" id="og-image">
     <meta property="og:locale" content="pt_BR">
+    <meta property="og:site_name" content="Psicóloga Lucilena Vogel">
+
+    <!-- Twitter Card (atualizado dinamicamente) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Blog | Psicóloga Lucilena Vogel" id="tw-title">
+    <meta name="twitter:description" content="Artigos sobre saúde mental e bem-estar emocional." id="tw-desc">
+    <meta name="twitter:image" content="https://www.psicolucilenavogel.com.br/assets/logo/logo.png" id="tw-image">
+
+    <!-- JSON-LD dinâmico -->
+    <script type="application/ld+json" id="jsonld-blog">
+    {
+        "@context": "https://schema.org",
+        "@type": "Blog",
+        "name": "Blog | Psicóloga Lucilena Vogel",
+        "url": "https://www.psicolucilenavogel.com.br/blog",
+        "description": "Artigos sobre saúde mental, ansiedade, depressão e bem-estar emocional.",
+        "author": {
+            "@type": "Person",
+            "name": "Lucilena Vogel",
+            "url": "https://www.psicolucilenavogel.com.br"
+        }
+    }
+    </script>
 
     <link rel="icon" type="image/png" href="assets/logo/logo.png">
     <link rel="manifest" href="manifest.json">
@@ -30,38 +56,29 @@
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y3WPG6992F"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
+        function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
         gtag('config', 'G-Y3WPG6992F');
     </script>
 
     <style>
-        /* ── BLOG LAYOUT ── */
-        
         .blog-hero {
             background: linear-gradient(135deg, #e8f4f3 0%, #f8f9fa 100%);
             padding: 140px 30px 60px;
             text-align: center;
         }
-        
         .blog-hero h1 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 3rem;
             color: var(--primary-dark);
             margin-bottom: 12px;
         }
-        
         .blog-hero p {
             font-size: 1.1rem;
             color: var(--text-light);
             max-width: 560px;
             margin: auto;
         }
-        /* ── LISTA DE POSTS ── */
-        
         .blog-list {
             max-width: 860px;
             margin: 0 auto;
@@ -70,7 +87,6 @@
             flex-direction: column;
             gap: 30px;
         }
-        
         .post-card {
             background: var(--white);
             border-radius: 20px;
@@ -81,12 +97,10 @@
             color: inherit;
             display: block;
         }
-        
         .post-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.10);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.10);
         }
-        
         .post-meta {
             font-size: 0.82rem;
             color: var(--primary);
@@ -95,7 +109,6 @@
             text-transform: uppercase;
             margin-bottom: 10px;
         }
-        
         .post-card h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.8rem;
@@ -103,14 +116,12 @@
             margin-bottom: 12px;
             line-height: 1.3;
         }
-        
         .post-card p {
             color: var(--text-light);
             font-size: 1rem;
             line-height: 1.7;
             margin-bottom: 18px;
         }
-        
         .post-link {
             font-size: 0.9rem;
             color: var(--primary);
@@ -120,25 +131,18 @@
             gap: 6px;
             transition: gap 0.2s ease;
         }
-        
-        .post-card:hover .post-link {
-            gap: 10px;
-        }
-        
+        .post-card:hover .post-link { gap: 10px; }
         .blog-empty {
             text-align: center;
             color: var(--text-light);
             font-size: 1.05rem;
             padding: 60px 0;
         }
-        /* ── ARTIGO INDIVIDUAL ── */
-        
         .article-wrapper {
             max-width: 760px;
             margin: 0 auto;
             padding: 120px 30px 100px;
         }
-        
         .article-back {
             display: inline-flex;
             align-items: center;
@@ -150,11 +154,7 @@
             margin-bottom: 40px;
             transition: gap 0.2s ease;
         }
-        
-        .article-back:hover {
-            gap: 12px;
-        }
-        
+        .article-back:hover { gap: 12px; }
         .article-meta {
             font-size: 0.82rem;
             color: var(--primary);
@@ -163,7 +163,6 @@
             text-transform: uppercase;
             margin-bottom: 14px;
         }
-        
         .article-title {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.8rem;
@@ -171,54 +170,29 @@
             line-height: 1.2;
             margin-bottom: 10px;
         }
-        
-        .article-author {
-            font-size: 0.9rem;
-            color: var(--text-light);
-            margin-bottom: 40px;
-        }
-        
         .article-divider {
             border: none;
             border-top: 2px solid var(--accent);
             margin-bottom: 40px;
         }
-        
         .article-body {
             font-size: 1.07rem;
             color: var(--text);
             line-height: 1.9;
         }
-        
-        .article-body p {
-            margin-bottom: 24px;
-        }
-        
-        .article-body h2,
-        .article-body h3 {
+        .article-body p { margin-bottom: 24px; }
+        .article-body h2, .article-body h3 {
             font-family: 'Cormorant Garamond', serif;
             color: var(--primary-dark);
             margin: 36px 0 16px;
         }
-        
-        .article-body h2 {
-            font-size: 2rem;
-        }
-        
-        .article-body h3 {
-            font-size: 1.5rem;
-        }
-        
-        .article-body ul,
-        .article-body ol {
+        .article-body h2 { font-size: 2rem; }
+        .article-body h3 { font-size: 1.5rem; }
+        .article-body ul, .article-body ol {
             padding-left: 24px;
             margin-bottom: 24px;
         }
-        
-        .article-body li {
-            margin-bottom: 8px;
-        }
-        
+        .article-body li { margin-bottom: 8px; }
         .article-body blockquote {
             border-left: 4px solid var(--primary);
             padding: 16px 24px;
@@ -228,14 +202,11 @@
             color: var(--text-light);
             font-style: italic;
         }
-        /* ── LOADING ── */
-        
         .blog-loading {
             text-align: center;
             padding: 80px 30px;
             color: var(--text-light);
         }
-        
         .blog-loading i {
             font-size: 2rem;
             color: var(--primary);
@@ -243,78 +214,43 @@
             display: block;
             margin-bottom: 16px;
         }
-        
-        @keyframes spin {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-        /* ── ERROR ── */
-        
-        .blog-error {
-            text-align: center;
-            padding: 80px 30px;
-        }
-        
-        .blog-error i {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-            display: block;
-        }
-        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .blog-error { text-align: center; padding: 80px 30px; }
+        .blog-error i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
         .blog-error h2 {
             font-family: 'Cormorant Garamond', serif;
             font-size: 2rem;
             color: var(--primary-dark);
             margin-bottom: 12px;
         }
-        
-        .blog-error p {
-            color: var(--text-light);
-            margin-bottom: 30px;
-        }
-        /* ── RESPONSIVE ── */
-        
+        .blog-error p { color: var(--text-light); margin-bottom: 30px; }
         @media (max-width: 768px) {
-            .blog-hero h1 {
-                font-size: 2.2rem;
-            }
-            .post-card {
-                padding: 28px 24px;
-            }
-            .post-card h2 {
-                font-size: 1.5rem;
-            }
-            .article-title {
-                font-size: 2.2rem;
-            }
-            .article-wrapper {
-                padding: 100px 20px 80px;
-            }
+            .blog-hero h1 { font-size: 2.2rem; }
+            .post-card { padding: 28px 24px; }
+            .post-card h2 { font-size: 1.5rem; }
+            .article-title { font-size: 2.2rem; }
+            .article-wrapper { padding: 100px 20px 80px; }
         }
     </style>
 </head>
 
 <body>
 
-    <!-- NAVBAR -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
                 <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
-                    <img src="assets/logo/logo.png" alt="Logo Lucilena Vogel" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%2220%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
+                    <img src="assets/logo/logo.png" alt="Logo Lucilena Vogel"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%2220%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
                     <span>Psicóloga Lucilena Vogel</span>
                 </a>
             </div>
-
             <div class="menu-toggle" onclick="toggleMenu()">
                 <span></span><span></span><span></span>
             </div>
-
             <ul class="nav-links" id="navLinks">
-                <li><a href="/#inicio" onclick="closeMenu()">Início</a></li>
-                <li><a href="/blog" onclick="closeMenu()">Blog</a></li>
+                <li><a href="/" onclick="closeMenu()">Início</a></li>
+                <li><a href="/blog.html" onclick="closeMenu()">Blog</a></li>
                 <li><a href="/#sobre" onclick="closeMenu()">Sobre mim</a></li>
                 <li><a href="/#faq" onclick="closeMenu()">Dúvidas</a></li>
                 <li><a href="/#metodo" onclick="closeMenu()">Método de atendimento</a></li>
@@ -323,37 +259,65 @@
         </div>
     </nav>
 
-    <!-- CONTEÚDO DINÂMICO -->
     <main id="blog-main">
         <div class="blog-loading">
-            <i class="fa-solid fa-circle-notch"></i> Carregando...
+            <i class="fa-solid fa-circle-notch"></i>
+            Carregando...
         </div>
     </main>
 
-    <!-- FOOTER -->
     <footer>
-        <p>
-            © <span id="year"></span> – Lucilena Vogel Pitz Feder – CRP 12/25849 – Todos os direitos reservados
-        </p>
+        <p>© <span id="year"></span> – Lucilena Vogel Pitz Feder – CRP 12/25849 – Todos os direitos reservados</p>
     </footer>
 
     <script src="scripts.js"></script>
     <script>
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // ── ÍNDICE DE POSTS ──────────────────────────────────────────────────────
-        // Adicione novos slugs aqui para que apareçam na listagem.
+        const BASE_URL = 'https://www.psicolucilenavogel.com.br';
+
+        // ── ÍNDICE DE POSTS ── Adicione novos slugs aqui ─────────────────────────
         const POST_SLUGS = [
-            'como-lidar-com-a-ansiedade'
-            // 'outro-post-aqui',
+            'como-lidar-com-a-ansiedade',
+            // 'nome-do-proximo-post',
         ];
+
+        // ── SEO DINÂMICO ─────────────────────────────────────────────────────────
+        function setMetaTags({ title, description, url, type = 'article', image }) {
+            const img = image || `${BASE_URL}/assets/logo/logo.png`;
+
+            document.title = title;
+            document.querySelector('meta[name="description"]').content = description;
+            document.getElementById('canonical').href = url;
+
+            document.getElementById('og-title').content = title;
+            document.getElementById('og-desc').content = description;
+            document.getElementById('og-url').content = url;
+            document.getElementById('og-type').content = type;
+            document.getElementById('og-image').content = img;
+
+            document.getElementById('tw-title').content = title;
+            document.getElementById('tw-desc').content = description;
+            document.getElementById('tw-image').content = img;
+        }
+
+        function setJsonLD(data) {
+            document.getElementById('jsonld-blog').textContent = JSON.stringify(data, null, 2);
+        }
 
         // ── UTILITÁRIOS ──────────────────────────────────────────────────────────
         function formatDate(dateStr) {
             if (!dateStr) return '';
             const [y, m, d] = dateStr.split('-');
-            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
-            return `${parseInt(d)} de ${months[parseInt(m) - 1]} de ${y}`;
+            const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+            return `${parseInt(d)} de ${months[parseInt(m)-1]} de ${y}`;
+        }
+
+        // Extrai texto puro do HTML do artigo para meta description
+        function stripHtml(html) {
+            const tmp = document.createElement('div');
+            tmp.innerHTML = html;
+            return tmp.textContent || tmp.innerText || '';
         }
 
         async function fetchPost(slug) {
@@ -366,9 +330,35 @@
 
         // ── RENDERIZADORES ───────────────────────────────────────────────────────
         function renderList(posts) {
-            const main = document.getElementById('blog-main');
+            setMetaTags({
+                title: 'Blog | Psicóloga Lucilena Vogel',
+                description: 'Artigos sobre saúde mental, ansiedade, depressão e bem-estar emocional.',
+                url: `${BASE_URL}/blog`,
+                type: 'website'
+            });
 
-            document.title = 'Blog | Psicóloga Lucilena Vogel';
+            setJsonLD({
+                '@context': 'https://schema.org',
+                '@type': 'Blog',
+                name: 'Blog | Psicóloga Lucilena Vogel',
+                url: `${BASE_URL}/blog`,
+                description: 'Artigos sobre saúde mental, ansiedade e bem-estar emocional.',
+                author: {
+                    '@type': 'Person',
+                    name: 'Lucilena Vogel',
+                    url: BASE_URL
+                },
+                blogPost: posts.map(p => ({
+                    '@type': 'BlogPosting',
+                    headline: p.title,
+                    url: `${BASE_URL}/blog/${p.slug}`,
+                    datePublished: p.date,
+                    description: p.excerpt,
+                    author: { '@type': 'Person', name: p.author || 'Lucilena Vogel' }
+                }))
+            });
+
+            const main = document.getElementById('blog-main');
 
             if (posts.length === 0) {
                 main.innerHTML = `
@@ -383,7 +373,7 @@
             }
 
             const cards = posts.map(p => `
-                <a href="/blog/${p.slug}" class="post-card" onclick="handleBlogNav(event, '${p.slug}')">
+                <a href="/blog/${p.slug}" class="post-card" onclick="handleBlogNav(event,'${p.slug}')">
                     <div class="post-meta">${formatDate(p.date)}</div>
                     <h2>${p.title}</h2>
                     <p>${p.excerpt}</p>
@@ -399,13 +389,49 @@
         }
 
         function renderArticle(post) {
+            const url = `${BASE_URL}/blog/${post.slug}`;
+            const plainText = stripHtml(post.content);
+            const desc = post.excerpt || plainText.slice(0, 155).trim() + '…';
+
+            setMetaTags({
+                title: `${post.title} | Psicóloga Lucilena Vogel`,
+                description: desc,
+                url,
+                type: 'article',
+                image: post.image || null
+            });
+
+            // JSON-LD BlogPosting — usado pelo Google para rich results
+            setJsonLD({
+                '@context': 'https://schema.org',
+                '@type': 'BlogPosting',
+                headline: post.title,
+                description: desc,
+                url,
+                datePublished: post.date,
+                dateModified: post.updated || post.date,
+                author: {
+                    '@type': 'Person',
+                    name: post.author || 'Lucilena Vogel',
+                    url: BASE_URL
+                },
+                publisher: {
+                    '@type': 'Person',
+                    name: 'Lucilena Vogel',
+                    logo: {
+                        '@type': 'ImageObject',
+                        url: `${BASE_URL}/assets/logo/logo.png`
+                    }
+                },
+                mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+                image: post.image || `${BASE_URL}/assets/logo/logo.png`,
+                articleBody: plainText
+            });
+
             const main = document.getElementById('blog-main');
-
-            document.title = `${post.title} | Psicóloga Lucilena Vogel`;
-
             main.innerHTML = `
                 <div class="article-wrapper">
-                    <a href="/blog" class="article-back" onclick="handleBlogNav(event, null)">
+                    <a href="/blog" class="article-back" onclick="handleBlogNav(event,null)">
                         <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
                     </a>
                     <div class="article-meta">${formatDate(post.date)}${post.author ? ' · ' + post.author : ''}</div>
@@ -423,33 +449,29 @@
                         <i class="fa-regular fa-face-sad-tear"></i>
                         <h2>Artigo não encontrado</h2>
                         <p>${msg}</p>
-                        <a href="/blog" class="btn-primary" onclick="handleBlogNav(event, null)">Ver todos os artigos</a>
+                        <a href="/blog" class="btn-primary" onclick="handleBlogNav(event,null)">Ver todos os artigos</a>
                     </div>
                 </div>`;
         }
 
         // ── NAVEGAÇÃO ────────────────────────────────────────────────────────────
-        async function loadBlog(slug) {
-            const main = document.getElementById('blog-main');
-            main.innerHTML = `<div class="blog-loading"><i class="fa-solid fa-circle-notch"></i>Carregando...</div>`;
-
+        async function loadBlog(slug, pushState = true) {
+            document.getElementById('blog-main').innerHTML =
+                `<div class="blog-loading"><i class="fa-solid fa-circle-notch"></i>Carregando...</div>`;
             try {
                 if (slug) {
-                    // Exibe artigo individual
                     const post = await fetchPost(slug);
                     renderArticle(post);
-                    window.history.pushState({
-                        slug
-                    }, '', `/blog/${slug}`);
+                    if (pushState) window.history.pushState({ slug }, '', `/blog/${slug}`);
                 } else {
-                    // Exibe lista de posts
                     const posts = await Promise.all(
                         POST_SLUGS.map(s => fetchPost(s).catch(() => null))
                     );
-                    renderList(posts.filter(Boolean).sort((a, b) => b.date ?.localeCompare(a.date)));
-                    window.history.pushState({
-                        slug: null
-                    }, '', '/blog');
+                    renderList(posts.filter(Boolean).sort((a,b) => b.date?.localeCompare(a.date)));
+                    if (pushState) window.history.pushState({ slug: null }, '', '/blog');
+                }
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'page_view', { page_path: window.location.pathname });
                 }
             } catch (err) {
                 renderError(err.message || 'Não foi possível carregar o conteúdo.');
@@ -461,31 +483,19 @@
             loadBlog(slug);
         }
 
-        // Botão voltar do navegador
         window.addEventListener('popstate', () => {
-            const slug = getSlugFromPath();
-            loadBlog(slug || null);
+            loadBlog(getSlugFromPath(), false);
         });
 
         function getSlugFromPath() {
-            // Suporta /blog, /blog/, /blog/slug, /blog.html?post=slug (legado)
-            const path = window.location.pathname;
             const params = new URLSearchParams(window.location.search);
-
-            // Legado: ?post=slug
             if (params.get('post')) return params.get('post');
-
-            // /blog/slug
-            const match = path.match(/\/blog\/([^/]+)/);
+            const match = window.location.pathname.match(/\/blog\/([^/]+)/);
             return match ? match[1] : null;
         }
 
-        // ── INICIALIZAÇÃO ────────────────────────────────────────────────────────
-        (function init() {
-            const slug = getSlugFromPath();
-            loadBlog(slug || null);
-        })();
+        // ── INIT ─────────────────────────────────────────────────────────────────
+        loadBlog(getSlugFromPath(), false);
     </script>
 </body>
-
 </html>
