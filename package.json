@@ -4,8 +4,9 @@
     "description": "Site da Psicóloga Lucilena Vogel - Terapia Cognitivo-Comportamental",
     "main": "server.js",
     "scripts": {
-        "start": "node server.js",
-        "dev": "node server.js"
+        "generate-sitemap": "node generate-sitemap.js",
+        "start": "npm run generate-sitemap && node server.js",
+        "dev": "npm run generate-sitemap && node server.js"
     },
     "keywords": [
         "psicologia",
