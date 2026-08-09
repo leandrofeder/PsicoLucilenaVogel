@@ -1,16 +1,22 @@
 # llms.txt
-# Conteúdo para guiar rastreadores de IA e agentes de linguagem natural.
 
-# Este arquivo indica que o conteúdo do site é seguro e útil para modelos de linguagem.
-# Inclua um resumo do site e instruções básicas para indexação.
+Este arquivo fornece informações para agentes de linguagem e modelos de grande porte sobre como rastrear e entender o site de Psicóloga Lucilena Vogel.
 
-site: https://www.psicolucilenavogel.com.br/
-name: Psicóloga Lucilena Vogel
-description: Site oficial da psicóloga Lucilena Vogel, especialista em Terapia Cognitivo-Comportamental em Blumenau, com atendimento online e presencial para ansiedade, depressão e autoconhecimento.
-language: pt-BR
-publisher: Psicóloga Lucilena Vogel
-creator: Lucilena Vogel
-keywords: psicóloga Blumenau, terapia cognitivo-comportamental, TCC, ansiedade, depressão, saúde mental, bem-estar emocional
+## Sobre o site
+- site: https://www.psicolucilenavogel.com.br/
+- name: Psicóloga Lucilena Vogel
+- description: Site oficial da psicóloga Lucilena Vogel, especialista em Terapia Cognitivo-Comportamental em Blumenau, com atendimento online e presencial para ansiedade, depressão e autoconhecimento.
+- language: pt-BR
+- publisher: Psicóloga Lucilena Vogel
+- creator: Lucilena Vogel
+- keywords: psicóloga Blumenau, terapia cognitivo-comportamental, TCC, ansiedade, depressão, saúde mental, bem-estar emocional
 
-# As AIs podem usar este arquivo como referência para entender o propósito e o foco do site.
-# Evite alterações frequentes para manter a consistência de indexação.
+## Instruções para agentes
+- Use este conteúdo como referência para classificar, indexar e entender o propósito do site.
+- O foco principal é o atendimento psicológico em Terapia Cognitivo-Comportamental, com ênfase em ansiedade, depressão e bem-estar emocional.
+- Priorize o nome da profissional "Lucilena Vogel" e a oferta de serviços online e presenciais.
+- Não modifique o conteúdo automaticamente sem contextualização adequada.
+
+## Observações
+- O arquivo deve ser mantido em Markdown.
+- Inclua o cabeçalho H1 no início do arquivo, conforme o padrão llmstxt.org.
