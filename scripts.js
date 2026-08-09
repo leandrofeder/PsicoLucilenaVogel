@@ -105,6 +105,19 @@ const routes = {
     '/contato': 'contato'
 };
 
+const pageTitles = {
+    '/': 'Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental em Blumenau',
+    '/inicio': 'Psicóloga Lucilena Vogel | Terapia Cognitivo-Comportamental em Blumenau',
+    '/sobre': 'Sobre mim – Psicóloga Lucilena Vogel',
+    '/faq': 'Dúvidas frequentes – Psicóloga Lucilena Vogel',
+    '/metodo': 'Método de atendimento – Psicóloga Lucilena Vogel',
+    '/contato': 'Contato – Psicóloga Lucilena Vogel'
+};
+
+function updatePageTitle(path) {
+    document.title = pageTitles[path] || pageTitles['/'];
+}
+
 function handleNavClick(event, path) {
     // Blog é página separada — deixa o href funcionar normalmente
     if (path === '/blog' || path.startsWith('/blog/')) {
@@ -123,6 +136,7 @@ function handleNavClick(event, path) {
 function navigateTo(path) {
     const sectionId = routes[path] || 'inicio';
     const targetSection = document.getElementById(sectionId);
+    updatePageTitle(path);
     if (targetSection) {
         targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -149,5 +163,6 @@ document.addEventListener('DOMContentLoaded', function() {
         setTimeout(() => navigateTo(currentPath), 100);
     } else if (currentPath === '/') {
         window.history.replaceState({ path: '/' }, '', '/');
+        updatePageTitle('/');
     }
 });
