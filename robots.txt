@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+# Sitemap para indexação de páginas principais e artigos
 Sitemap: https://www.psicolucilenavogel.com.br/sitemap.xml

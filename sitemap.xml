@@ -5,7 +5,7 @@
   <!-- Página principal -->
   <url>
     <loc>https://www.psicolucilenavogel.com.br/</loc>
-    <lastmod>2025-06-01</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
@@ -13,7 +13,7 @@
   <!-- Blog (listagem) -->
   <url>
     <loc>https://www.psicolucilenavogel.com.br/blog</loc>
-    <lastmod>2025-06-01</lastmod>
+    <lastmod>2026-08-08</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -21,7 +21,7 @@
   <!-- Posts individuais -->
   <url>
     <loc>https://www.psicolucilenavogel.com.br/blog/como-lidar-com-a-ansiedade</loc>
-    <lastmod>2025-06-01</lastmod>
+    <lastmod>2026-06-13</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
     <news:news>
@@ -29,7 +29,7 @@
         <news:name>Blog | Psicóloga Lucilena Vogel</news:name>
         <news:language>pt</news:language>
       </news:publication>
-      <news:publication_date>2025-06-01</news:publication_date>
+      <news:publication_date>2026-06-13</news:publication_date>
       <news:title>Como Lidar com a Ansiedade no Dia a Dia</news:title>
     </news:news>
   </url>
