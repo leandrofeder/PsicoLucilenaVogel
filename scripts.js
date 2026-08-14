@@ -1,7 +1,16 @@
+/**
+ * Psicóloga Lucilena Vogel — Main Scripts
+ * Handles: routing, navigation, FAQ toggle, scroll reveal, WhatsApp integration
+ */
+
+'use strict';
+
+// ── Constants ────────────────────────────────────────────────────────────────
 const WHATSAPP_NUMBER = '5547991586284';
 const WHATSAPP_MESSAGE = encodeURIComponent('Olá, gostaria de agendar uma sessão com a psicóloga Lucilena Vogel.');
 const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
+// ── WhatsApp Links ───────────────────────────────────────────────────────────
 function syncWhatsAppLinks() {
     document.querySelectorAll('[data-whatsapp-link]').forEach((link) => {
         link.href = WHATSAPP_URL;
@@ -9,6 +18,7 @@ function syncWhatsAppLinks() {
         link.setAttribute('rel', 'noopener noreferrer');
     });
 
+    // Create floating WhatsApp button if not present
     if (!document.querySelector('.whatsapp-float')) {
         const floatButton = document.createElement('a');
         floatButton.className = 'whatsapp-float';
@@ -21,23 +31,48 @@ function syncWhatsAppLinks() {
     }
 }
 
-// Toggle FAQ
-function toggleFAQ(element) {
-    const faqItem = element.closest('.faq-item');
-    if (!faqItem) return;
+// ── FAQ Toggle ───────────────────────────────────────────────────────────────
+function initFAQ() {
+    document.addEventListener('click', function (event) {
+        const question = event.target.closest('.faq-question');
+        if (!question) return;
 
-    const allFaqItems = document.querySelectorAll('.faq-item');
+        const faqItem = question.closest('.faq-item');
+        if (!faqItem) return;
 
-    allFaqItems.forEach(item => {
-        if (item !== faqItem && item.classList.contains('active')) {
-            item.classList.remove('active');
-        }
+        const isActive = faqItem.classList.contains('active');
+        const answer = faqItem.querySelector('.faq-answer');
+
+        // Close all other items
+        document.querySelectorAll('.faq-item.active').forEach(item => {
+            if (item !== faqItem) {
+                item.classList.remove('active');
+                const btn = item.querySelector('.faq-question');
+                const ans = item.querySelector('.faq-answer');
+                if (btn) btn.setAttribute('aria-expanded', 'false');
+                if (ans) ans.setAttribute('aria-hidden', 'true');
+            }
+        });
+
+        // Toggle current item
+        faqItem.classList.toggle('active');
+        question.setAttribute('aria-expanded', !isActive);
+        if (answer) answer.setAttribute('aria-hidden', isActive);
     });
 
-    faqItem.classList.toggle('active');
+    // Keyboard support for FAQ items
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' || event.key === ' ') {
+            const question = event.target.closest('.faq-question');
+            if (question) {
+                event.preventDefault();
+                question.click();
+            }
+        }
+    });
 }
 
-// Formulário de contato
+// ── Contact Form ─────────────────────────────────────────────────────────────
 async function handleSubmit(event) {
     event.preventDefault();
 
@@ -73,7 +108,7 @@ async function handleSubmit(event) {
         });
 
         if (response.ok) {
-            formMessage.textContent = 'Mensagem enviada com sucesso! Retornarei em breve.';
+            formMessage.textContent = 'Mensagem enviada com sucesso. Retornarei em breve.';
             formMessage.className = 'form-message success';
             formMessage.style.display = 'block';
             if (typeof gtag !== 'undefined') {
@@ -95,32 +130,108 @@ async function handleSubmit(event) {
     submitButton.disabled = false;
     submitButton.textContent = 'Enviar mensagem';
 
-    setTimeout(() => { formMessage.style.display = 'none'; }, 5000);
+    setTimeout(() => {
+        if (formMessage) formMessage.style.display = 'none';
+    }, 5000);
 }
 
-// Menu toggle
+// ── Menu Toggle ──────────────────────────────────────────────────────────────
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     const menuToggle = document.querySelector('.menu-toggle');
+
     if (navLinks) navLinks.classList.toggle('active');
-    if (menuToggle) menuToggle.classList.toggle('active');
+    if (menuToggle) {
+        menuToggle.classList.toggle('active');
+        const isOpen = menuToggle.classList.contains('active');
+        menuToggle.setAttribute('aria-expanded', isOpen);
+        menuToggle.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu de navegação');
+    }
 }
 
 function closeMenu() {
     const navLinks = document.getElementById('navLinks');
     const menuToggle = document.querySelector('.menu-toggle');
+
     if (navLinks) navLinks.classList.remove('active');
-    if (menuToggle) menuToggle.classList.remove('active');
+    if (menuToggle) {
+        menuToggle.classList.remove('active');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Abrir menu de navegação');
+    }
 }
 
-document.addEventListener('click', function(event) {
+// Close menu when clicking outside
+document.addEventListener('click', function (event) {
     const navbar = document.querySelector('.navbar');
-    if (navbar && !navbar.contains(event.target)) {
+    const navLinks = document.getElementById('navLinks');
+    if (navbar && navLinks && navLinks.classList.contains('active') && !navbar.contains(event.target)) {
         closeMenu();
     }
 });
 
-// ── ROTEAMENTO (apenas para index.html) ─────────────────────────────────────
+// Close menu on Escape key
+document.addEventListener('keydown', function (event) {
+    if (event.key === 'Escape') {
+        closeMenu();
+    }
+});
+
+// ── Navbar Scroll Effect ─────────────────────────────────────────────────────
+function initNavbarScroll() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    let ticking = false;
+
+    function updateNavbar() {
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }, { passive: true });
+}
+
+// ── Scroll Reveal ────────────────────────────────────────────────────────────
+function initScrollReveal() {
+    // Respect reduced motion preference
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReducedMotion) return;
+
+    const revealElements = document.querySelectorAll('.section, .about-content, .faq-item, .contact-card, .method-card');
+
+    revealElements.forEach((el, index) => {
+        el.classList.add('reveal');
+        // Stagger delay: 50ms between items, max 250ms
+        const delay = Math.min(index * 50, 250);
+        el.style.transitionDelay = `${delay}ms`;
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -60px 0px'
+    });
+
+    revealElements.forEach((el) => observer.observe(el));
+}
+
+// ── Routing (SPA-like navigation for index.html) ─────────────────────────────
 const routes = {
     '/': 'inicio',
     '/inicio': 'inicio',
@@ -144,7 +255,7 @@ function updatePageTitle(path) {
 }
 
 function handleNavClick(event, path) {
-    if (path === '/blog' || path.startsWith('/blog/')) {
+    if (path === '/blog' || (path && path.startsWith('/blog/'))) {
         return;
     }
 
@@ -161,8 +272,15 @@ function navigateTo(path) {
     const sectionId = routes[path] || 'inicio';
     const targetSection = document.getElementById(sectionId);
     updatePageTitle(path);
+
     if (targetSection) {
-        targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 72;
+        const targetPosition = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
+
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+        });
     }
 }
 
@@ -174,47 +292,20 @@ if ('scrollRestoration' in history) {
     history.scrollRestoration = 'manual';
 }
 
-window.addEventListener('pageshow', function() {
+// ── Initialization ───────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', function () {
     window.scrollTo(0, 0);
-});
 
-document.addEventListener('DOMContentLoaded', function() {
-    window.scrollTo(0, 0);
     syncWhatsAppLinks();
+    initFAQ();
+    initNavbarScroll();
+    initScrollReveal();
 
-    document.addEventListener('click', function(event) {
-        const question = event.target.closest('.faq-question');
-        if (question) {
-            toggleFAQ(question);
-        }
-
-        const item = event.target.closest('.faq-item');
-        if (item && !question && !event.target.closest('.faq-answer')) {
-            const firstQuestion = item.querySelector('.faq-question');
-            if (firstQuestion) toggleFAQ(firstQuestion);
-        }
-    });
-
-    const revealItems = document.querySelectorAll('.section, .about-content, .faq-item, .contact-card, .method-card, .contact-form-container');
-    revealItems.forEach((item, index) => {
-        item.classList.add('reveal');
-        item.style.transitionDelay = `${index * 80}ms`;
-    });
-
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('visible');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.12 });
-
-    revealItems.forEach((item) => revealObserver.observe(item));
-
+    // Set current year
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+    // Handle initial route
     const urlParams = new URLSearchParams(window.location.search);
     const routeParam = urlParams.get('route');
     let currentPath = window.location.pathname || '/';
@@ -230,4 +321,8 @@ document.addEventListener('DOMContentLoaded', function() {
         window.history.replaceState({ path: '/' }, '', '/');
         updatePageTitle('/');
     }
+});
+
+window.addEventListener('pageshow', function () {
+    window.scrollTo(0, 0);
 });

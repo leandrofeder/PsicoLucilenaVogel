@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- SEO base (atualizado dinamicamente via JS para cada artigo) -->
+    <!-- SEO (updated dynamically via JS for each article) -->
     <title>Blog | Psicóloga Lucilena Vogel</title>
     <meta name="description" content="Artigos sobre saúde mental, ansiedade, depressão e bem-estar emocional. Conteúdo da Psicóloga Lucilena Vogel.">
     <meta name="keywords" content="psicóloga Blumenau, blog de psicologia, ansiedade, depressão, bem-estar emocional, TCC">
@@ -13,7 +13,7 @@
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.psicolucilenavogel.com.br/blog" id="canonical">
 
-    <!-- Open Graph (atualizado dinamicamente) -->
+    <!-- Open Graph (updated dynamically) -->
     <meta property="og:title" content="Blog | Psicóloga Lucilena Vogel" id="og-title">
     <meta property="og:description" content="Artigos sobre saúde mental, ansiedade e bem-estar emocional." id="og-desc">
     <meta property="og:url" content="https://www.psicolucilenavogel.com.br/blog" id="og-url">
@@ -26,7 +26,7 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:site_name" content="Psicóloga Lucilena Vogel">
 
-    <!-- Twitter Card (atualizado dinamicamente) -->
+    <!-- Twitter Card (updated dynamically) -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:site" content="@psicolucilenavogel">
     <meta name="twitter:creator" content="@psicolucilenavogel">
@@ -34,7 +34,7 @@
     <meta name="twitter:description" content="Artigos sobre saúde mental, ansiedade e bem-estar emocional." id="tw-desc">
     <meta name="twitter:image" content="https://www.psicolucilenavogel.com.br/assets/profile/hero.jpg" id="tw-image">
 
-    <!-- JSON-LD dinâmico -->
+    <!-- JSON-LD (updated dynamically) -->
     <script type="application/ld+json" id="jsonld-blog">
     {
         "@context": "https://schema.org",
@@ -50,13 +50,19 @@
     }
     </script>
 
-    <link rel="icon" type="image/png" href="assets/logo/logo.png">
+    <!-- Identity -->
+    <link rel="icon" type="image/png" href="assets/logo/logo.ico">
     <link rel="manifest" href="manifest.json">
 
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Styles -->
     <link rel="stylesheet" href="styles.css">
 
     <!-- Google Analytics -->
@@ -67,271 +73,68 @@
         gtag('js', new Date());
         gtag('config', 'G-Y3WPG6992F');
     </script>
-
-    <style>
-        .blog-hero {
-            background: linear-gradient(135deg, #e8f4f3 0%, #f8f9fa 100%);
-            padding: 140px 30px 60px;
-            text-align: center;
-        }
-        .blog-hero h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 3rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-        .blog-hero p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            max-width: 560px;
-            margin: auto;
-        }
-        .blog-list {
-            max-width: 860px;
-            margin: 0 auto;
-            padding: 70px 30px 100px;
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
-        .post-card {
-            background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(239,247,255,0.96) 100%);
-            border-radius: 24px;
-            padding: 0;
-            box-shadow: 0 14px 40px rgba(19, 48, 88, 0.09);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
-            display: block;
-            overflow: hidden;
-            border: 1px solid rgba(27, 94, 168, 0.08);
-            backdrop-filter: blur(8px);
-        }
-        .post-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 20px 48px rgba(19, 48, 88, 0.14);
-        }
-        .post-cover {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            display: block;
-            background: #edf5ff;
-        }
-        .post-card-body {
-            padding: 30px 30px 26px;
-        }
-        .post-meta {
-            font-size: 0.82rem;
-            color: var(--primary);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-        .post-card h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.8rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-            line-height: 1.3;
-        }
-        .post-card p {
-            color: var(--text-light);
-            font-size: 1rem;
-            line-height: 1.7;
-            margin-bottom: 18px;
-        }
-        .post-link {
-            font-size: 0.9rem;
-            color: var(--primary);
-            font-weight: 600;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            transition: gap 0.2s ease;
-        }
-        .post-card:hover .post-link { gap: 10px; }
-        .blog-empty {
-            text-align: center;
-            color: var(--text-light);
-            font-size: 1.05rem;
-            padding: 60px 0;
-        }
-        .article-wrapper {
-            max-width: 760px;
-            margin: 0 auto;
-            padding: 120px 30px 100px;
-        }
-
-        .article-shell {
-            background: rgba(255,255,255,0.6);
-            border: 1px solid rgba(30,110,199,0.08);
-            border-radius: 28px;
-            padding: 30px 26px;
-            box-shadow: 0 18px 48px rgba(25, 61, 111, 0.06);
-            backdrop-filter: blur(7px);
-        }
-        .article-back {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            color: var(--primary);
-            font-size: 0.9rem;
-            font-weight: 500;
-            text-decoration: none;
-            margin-bottom: 40px;
-            transition: gap 0.2s ease;
-        }
-        .article-back:hover { gap: 12px; }
-        .article-meta {
-            font-size: 0.82rem;
-            color: var(--primary);
-            font-weight: 500;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin-bottom: 14px;
-        }
-        .article-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.8rem;
-            color: var(--primary-dark);
-            line-height: 1.2;
-            margin-bottom: 10px;
-        }
-        .article-divider {
-            border: none;
-            border-top: 2px solid var(--accent);
-            margin-bottom: 40px;
-        }
-        .article-cover {
-            width: 100%;
-            max-height: 420px;
-            object-fit: cover;
-            border-radius: 22px;
-            margin-bottom: 30px;
-            box-shadow: 0 18px 42px rgba(19, 48, 88, 0.12);
-            border: 1px solid rgba(27, 94, 168, 0.08);
-        }
-        .article-body {
-            font-size: 1.07rem;
-            color: var(--text);
-            line-height: 1.9;
-        }
-        .article-body p { margin-bottom: 24px; }
-        .article-body img,
-        .article-body figure img {
-            max-width: 100%;
-            border-radius: 18px;
-            margin: 24px auto;
-            display: block;
-            box-shadow: 0 14px 34px rgba(19, 48, 88, 0.12);
-        }
-        .article-body figure {
-            margin: 30px 0;
-        }
-        .article-body h2, .article-body h3 {
-            font-family: 'Cormorant Garamond', serif;
-            color: var(--primary-dark);
-            margin: 36px 0 16px;
-        }
-        .article-body h2 { font-size: 2rem; }
-        .article-body h3 { font-size: 1.5rem; }
-        .article-body ul, .article-body ol {
-            padding-left: 24px;
-            margin-bottom: 24px;
-        }
-        .article-body li { margin-bottom: 8px; }
-        .article-body blockquote {
-            border-left: 4px solid var(--primary);
-            padding: 16px 24px;
-            margin: 30px 0;
-            background: var(--bg-light);
-            border-radius: 0 12px 12px 0;
-            color: var(--text-light);
-            font-style: italic;
-        }
-        .blog-loading {
-            text-align: center;
-            padding: 80px 30px;
-            color: var(--text-light);
-        }
-        .blog-loading i {
-            font-size: 2rem;
-            color: var(--primary);
-            animation: spin 1s linear infinite;
-            display: block;
-            margin-bottom: 16px;
-        }
-        @keyframes spin { to { transform: rotate(360deg); } }
-        .blog-error { text-align: center; padding: 80px 30px; }
-        .blog-error i { font-size: 3rem; color: var(--primary); margin-bottom: 20px; display: block; }
-        .blog-error h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            color: var(--primary-dark);
-            margin-bottom: 12px;
-        }
-        .blog-error p { color: var(--text-light); margin-bottom: 30px; }
-        @media (max-width: 768px) {
-            .blog-hero h1 { font-size: 2.2rem; }
-            .post-card { padding: 28px 24px; }
-            .post-card h2 { font-size: 1.5rem; }
-            .article-title { font-size: 2.2rem; }
-            .article-wrapper { padding: 100px 20px 80px; }
-        }
-    </style>
 </head>
 
 <body>
+    <!-- Skip to content -->
+    <a href="#blog-main" class="skip-link">Ir para o conteúdo principal</a>
 
-    <nav class="navbar">
+    <!-- NAVIGATION -->
+    <nav class="navbar" role="navigation" aria-label="Navegação principal">
         <div class="nav-container">
-            <div class="logo">
-                <a href="/" style="display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;">
-                    <img src="assets/logo/logo.png" alt="Logo Lucilena Vogel"
-                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2250%22 height=%2250%22%3E%3Ccircle cx=%2225%22 cy=%2225%22 r=%2220%22 fill=%22%2387a8a4%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%2220%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
-                    <span>Psicóloga Lucilena Vogel</span>
-                </a>
-            </div>
-            <div class="menu-toggle" onclick="toggleMenu()">
-                <span></span><span></span><span></span>
-            </div>
-            <ul class="nav-links" id="navLinks">
+            <a href="/" class="logo">
+                <img src="assets/logo/logo.ico" alt="Logo Lucilena Vogel" width="40" height="40" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2240%22 height=%2240%22 viewBox=%220 0 40 40%22%3E%3Ccircle cx=%2220%22 cy=%2220%22 r=%2218%22 fill=%22%235B9EB5%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.35em%22 fill=%22white%22 font-size=%2214%22 font-weight=%22600%22 font-family=%22sans-serif%22%3ELV%3C/text%3E%3C/svg%3E'">
+                <span>Lucilena Vogel</span>
+            </a>
+
+            <button class="menu-toggle" onclick="toggleMenu()" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="navLinks">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+
+            <ul class="nav-links" id="navLinks" role="list">
                 <li><a href="/" onclick="closeMenu()">Início</a></li>
-                <li><a href="/blog.html" onclick="closeMenu()">Blog</a></li>
+                <li><a href="/blog.html" onclick="closeMenu()" aria-current="page">Blog</a></li>
                 <li><a href="/#sobre" onclick="closeMenu()">Sobre mim</a></li>
                 <li><a href="/#faq" onclick="closeMenu()">Dúvidas</a></li>
-                <li><a href="/#metodo" onclick="closeMenu()">Método de atendimento</a></li>
+                <li><a href="/#metodo" onclick="closeMenu()">Método</a></li>
                 <li><a href="/#contato" onclick="closeMenu()">Contato</a></li>
             </ul>
         </div>
     </nav>
 
+    <!-- MAIN CONTENT -->
     <main id="blog-main">
-        <div class="blog-loading">
-            <i class="fa-solid fa-circle-notch"></i>
-            Carregando...
+        <div class="blog-loading" role="status" aria-live="polite">
+            <i class="fa-solid fa-circle-notch" aria-hidden="true"></i>
+            <span>Carregando...</span>
         </div>
     </main>
 
-    <footer>
-        <p>© <span id="year"></span> – Lucilena Vogel Pitz Feder – CRP 12/25849 – Todos os direitos reservados</p>
+    <!-- FOOTER -->
+    <footer role="contentinfo">
+        <p>&copy; <span id="year"></span> Lucilena Vogel Pitz Feder &mdash; CRP 12/25849 &mdash; Todos os direitos reservados</p>
     </footer>
 
+    <!-- Shared scripts -->
     <script src="scripts.js"></script>
+
+    <!-- Blog-specific scripts -->
     <script>
+        'use strict';
+
         document.getElementById('year').textContent = new Date().getFullYear();
 
         const BASE_URL = 'https://www.psicolucilenavogel.com.br';
 
-        // ── ÍNDICE DE POSTS ── Adicione novos slugs aqui ─────────────────────────
+        // ── Post index — add new slugs here ──────────────────────────────────────
         const POST_SLUGS = [
             'como-lidar-com-a-ansiedade',
             'como-melhorar-a-qualidade-do-sono-com-tcc'
         ];
 
-        // ── SEO DINÂMICO ─────────────────────────────────────────────────────────
+        // ── Dynamic SEO ──────────────────────────────────────────────────────────
         function setMetaTags({ title, description, url, type = 'article', image }) {
             const img = image || `${BASE_URL}/assets/logo/logo.png`;
 
@@ -354,12 +157,12 @@
             document.getElementById('jsonld-blog').textContent = JSON.stringify(data, null, 2);
         }
 
-        // ── UTILITÁRIOS ──────────────────────────────────────────────────────────
+        // ── Utilities ────────────────────────────────────────────────────────────
         function formatDate(dateStr) {
             if (!dateStr) return '';
             const [y, m, d] = dateStr.split('-');
-            const months = ['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
-            return `${parseInt(d)} de ${months[parseInt(m)-1]} de ${y}`;
+            const months = ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'];
+            return `${parseInt(d)} de ${months[parseInt(m) - 1]} de ${y}`;
         }
 
         function extractFirstImage(html) {
@@ -370,7 +173,6 @@
             return img ? img.getAttribute('src') : null;
         }
 
-        // Extrai texto puro do HTML do artigo para meta description
         function stripHtml(html) {
             const tmp = document.createElement('div');
             tmp.innerHTML = html;
@@ -385,7 +187,7 @@
             return post;
         }
 
-        // ── RENDERIZADORES ───────────────────────────────────────────────────────
+        // ── Renderers ────────────────────────────────────────────────────────────
         function renderList(posts) {
             setMetaTags({
                 title: 'Blog | Psicóloga Lucilena Vogel',
@@ -400,11 +202,7 @@
                 name: 'Blog | Psicóloga Lucilena Vogel',
                 url: `${BASE_URL}/blog`,
                 description: 'Artigos sobre saúde mental, ansiedade e bem-estar emocional.',
-                author: {
-                    '@type': 'Person',
-                    name: 'Lucilena Vogel',
-                    url: BASE_URL
-                },
+                author: { '@type': 'Person', name: 'Lucilena Vogel', url: BASE_URL },
                 blogPost: posts.map(p => ({
                     '@type': 'BlogPosting',
                     headline: p.title,
@@ -419,33 +217,33 @@
 
             if (posts.length === 0) {
                 main.innerHTML = `
-                    <div class="blog-hero">
-                        <h1>Blog</h1>
+                    <section class="blog-hero" aria-labelledby="blog-heading">
+                        <h1 id="blog-heading">Blog</h1>
                         <p>Artigos sobre saúde mental, bem-estar emocional e autoconhecimento.</p>
-                    </div>
+                    </section>
                     <div class="blog-list">
-                        <p class="blog-empty">Nenhum artigo publicado ainda. Volte em breve!</p>
+                        <p class="blog-empty">Nenhum artigo publicado ainda. Volte em breve.</p>
                     </div>`;
                 return;
             }
 
             const cards = posts.map(p => `
                 <a href="/blog/${p.slug}" class="post-card" onclick="handleBlogNav(event,'${p.slug}')">
-                    ${p.image ? `<img class="post-cover" src="${p.image}" alt="${p.title}" loading="lazy">` : ''}
+                    ${p.image ? `<img class="post-cover" src="${p.image}" alt="${p.title}" loading="lazy" decoding="async">` : ''}
                     <div class="post-card-body">
                         <div class="post-meta">${formatDate(p.date)}</div>
                         <h2>${p.title}</h2>
                         <p>${p.excerpt}</p>
-                        <span class="post-link">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                        <span class="post-link">Ler artigo <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></span>
                     </div>
                 </a>`).join('');
 
             main.innerHTML = `
-                <div class="blog-hero">
-                    <h1>Blog</h1>
+                <section class="blog-hero" aria-labelledby="blog-heading">
+                    <h1 id="blog-heading">Blog</h1>
                     <p>Artigos sobre saúde mental, bem-estar emocional e autoconhecimento.</p>
-                </div>
-                <div class="blog-list">${cards}</div>`;
+                </section>
+                <div class="blog-list" role="feed" aria-label="Lista de artigos">${cards}</div>`;
         }
 
         function renderArticle(post) {
@@ -462,7 +260,6 @@
                 image: coverImage || null
             });
 
-            // JSON-LD BlogPosting — usado pelo Google para rich results
             setJsonLD({
                 '@context': 'https://schema.org',
                 '@type': 'BlogPosting',
@@ -471,18 +268,11 @@
                 url,
                 datePublished: post.date,
                 dateModified: post.updated || post.date,
-                author: {
-                    '@type': 'Person',
-                    name: post.author || 'Lucilena Vogel',
-                    url: BASE_URL
-                },
+                author: { '@type': 'Person', name: post.author || 'Lucilena Vogel', url: BASE_URL },
                 publisher: {
                     '@type': 'Person',
                     name: 'Lucilena Vogel',
-                    logo: {
-                        '@type': 'ImageObject',
-                        url: `${BASE_URL}/assets/logo/logo.png`
-                    }
+                    logo: { '@type': 'ImageObject', url: `${BASE_URL}/assets/logo/logo.png` }
                 },
                 mainEntityOfPage: { '@type': 'WebPage', '@id': url },
                 image: coverImage || `${BASE_URL}/assets/logo/logo.png`,
@@ -491,16 +281,21 @@
 
             const main = document.getElementById('blog-main');
             main.innerHTML = `
-                <div class="article-wrapper">
+                <article class="article-wrapper">
                     <a href="/blog" class="article-back" onclick="handleBlogNav(event,null)">
-                        <i class="fa-solid fa-arrow-left"></i> Voltar para o blog
+                        <i class="fa-solid fa-arrow-left" aria-hidden="true"></i> Voltar para o blog
                     </a>
-                    <div class="article-meta">${formatDate(post.date)}${post.author ? ' · ' + post.author : ''}</div>
-                    <h1 class="article-title">${post.title}</h1>
-                    ${coverImage ? `<img class="article-cover" src="${coverImage}" alt="${post.title}" loading="eager">` : ''}
+                    <header>
+                        <div class="article-meta">${formatDate(post.date)}${post.author ? ' · ' + post.author : ''}</div>
+                        <h1 class="article-title">${post.title}</h1>
+                    </header>
+                    ${coverImage ? `<img class="article-cover" src="${coverImage}" alt="${post.title}" loading="eager" decoding="async">` : ''}
                     <hr class="article-divider">
                     <div class="article-body">${post.content}</div>
-                </div>`;
+                </article>`;
+
+            // Scroll to top smoothly
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
         function renderError(msg) {
@@ -508,18 +303,19 @@
             main.innerHTML = `
                 <div class="article-wrapper">
                     <div class="blog-error">
-                        <i class="fa-regular fa-face-sad-tear"></i>
+                        <i class="fa-regular fa-face-sad-tear" aria-hidden="true"></i>
                         <h2>Artigo não encontrado</h2>
                         <p>${msg}</p>
-                        <a href="/blog" class="btn-primary" onclick="handleBlogNav(event,null)">Ver todos os artigos</a>
+                        <a href="/blog" class="btn btn-primary" onclick="handleBlogNav(event,null)">Ver todos os artigos</a>
                     </div>
                 </div>`;
         }
 
-        // ── NAVEGAÇÃO ────────────────────────────────────────────────────────────
+        // ── Navigation ───────────────────────────────────────────────────────────
         async function loadBlog(slug, pushState = true) {
             document.getElementById('blog-main').innerHTML =
-                `<div class="blog-loading"><i class="fa-solid fa-circle-notch"></i>Carregando...</div>`;
+                `<div class="blog-loading" role="status" aria-live="polite"><i class="fa-solid fa-circle-notch" aria-hidden="true"></i><span>Carregando...</span></div>`;
+
             try {
                 if (slug) {
                     const post = await fetchPost(slug);
@@ -529,7 +325,7 @@
                     const posts = await Promise.all(
                         POST_SLUGS.map(s => fetchPost(s).catch(() => null))
                     );
-                    renderList(posts.filter(Boolean).sort((a,b) => b.date?.localeCompare(a.date)));
+                    renderList(posts.filter(Boolean).sort((a, b) => b.date?.localeCompare(a.date)));
                     if (pushState) window.history.pushState({ slug: null }, '', '/blog');
                 }
                 if (typeof gtag !== 'undefined') {
@@ -556,8 +352,9 @@
             return match ? match[1] : null;
         }
 
-        // ── INIT ─────────────────────────────────────────────────────────────────
+        // ── Init ─────────────────────────────────────────────────────────────────
         loadBlog(getSlugFromPath(), false);
     </script>
 </body>
+
 </html>
