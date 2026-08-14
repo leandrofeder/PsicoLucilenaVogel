@@ -551,6 +551,104 @@ ul {
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
+   TESTIMONIALS SECTION
+   ═══════════════════════════════════════════════════════════════════════ */
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-6);
+    max-width: 960px;
+    margin-inline: auto;
+}
+
+.testimonial-card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-lg);
+    padding: var(--space-6);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    transition: transform var(--duration-normal) var(--ease-out),
+                box-shadow var(--duration-normal) var(--ease-out),
+                border-color var(--duration-normal) var(--ease-out);
+}
+
+.testimonial-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-primary-soft);
+}
+
+.testimonial-stars {
+    display: flex;
+    gap: 2px;
+    color: #F5A623;
+    font-size: 0.875rem;
+}
+
+.testimonial-text {
+    flex: 1;
+}
+
+.testimonial-text p {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+    font-style: italic;
+}
+
+.testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-3);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.testimonial-name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+}
+
+.testimonial-source {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-1);
+}
+
+.testimonials-cta {
+    text-align: center;
+    margin-top: var(--space-8);
+}
+
+.testimonials-cta .btn {
+    gap: var(--space-2);
+}
+
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 968px) and (min-width: 769px) {
+    .testimonials-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .testimonials-grid .testimonial-card:last-child {
+        grid-column: 1 / -1;
+        max-width: 50%;
+        margin-inline: auto;
+    }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
    FAQ SECTION
    ═══════════════════════════════════════════════════════════════════════ */
 .faq-container {
