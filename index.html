@@ -51,13 +51,13 @@
     <link rel="manifest" href="manifest.json">
 
     <!-- Preload para fonts críticas -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 
     <!-- Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -349,19 +349,22 @@
     <section class="hero" id="inicio">
         <div class="hero-content">
             <div class="hero-text">
-                <h1>Lucilena Vogel | Psicóloga em Blumenau – TCC Online e Presencial</h1>
+                <h1>Lucilena Vogel<br>Psicóloga em Blumenau<br>TCC Online e Presencial</h1>
                 <p class="subtitle">Atendimento psicológico para adultos e adolescentes, com empatia, escuta qualificada e compromisso ético.</p>
                 <p>
                     Um espaço seguro para reflexão, autoconhecimento e desenvolvimento pessoal. A psicoterapia auxilia no cuidado com a saúde emocional e na construção de um relacionamento mais leve consigo mesma. Aqui, você é convidada a olhar para a sua história com respeito,
                     acolhimento e responsabilidade.
                 </p>
-                <a href="/contato" onclick="handleNavClick(event, '/contato')" class="btn-primary">Agendar atendimento</a>
-                <a href="/sobre" onclick="handleNavClick(event, '/sobre')" class="btn-secondary">Saiba mais</a>
+                <div class="hero-actions">
+                    <a href="https://wa.me/5547991586284?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20com%20a%20psic%C3%B3loga%20Lucilena%20Vogel." target="_blank" rel="noopener noreferrer" class="btn-whatsapp" data-whatsapp-link>Agendar atendimento</a>
+                    <a href="/sobre" onclick="handleNavClick(event, '/sobre')" class="btn-secondary">Saiba mais</a>
+                </div>
             </div>
 
             <div class="hero-image">
                 <div class="hero-decoration"></div>
-                <img src="assets/profile/DSC09181.JPG.webp" alt="Psicóloga Lucilena Vogel Pitz Feder - Especialista em Terapia Cognitivo-Comportamental" class="hero-img" loading="lazy" decoding="async" /> </div>
+                <img src="assets/profile/DSC09181.JPG.webp" alt="Psicóloga Lucilena Vogel Pitz Feder - Especialista em Terapia Cognitivo-Comportamental" class="hero-img" loading="lazy" decoding="async" />
+            </div>
         </div>
     </section>
 
@@ -377,7 +380,7 @@
                 <img src="assets/profile/DSC09143.JPG.webp" alt="Lucilena Vogel - Psicóloga especialista em Terapia Cognitivo-Comportamental em Blumenau" class="about-img" loading="lazy" onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22500%22%3E%3Crect width=%22400%22 height=%22500%22 fill=%22%2387a8a4%22 rx=%2220%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22 font-size=%22100%22 font-weight=%22bold%22%3ELV%3C/text%3E%3C/svg%3E'">
 
                 <div class="about-text">
-                    <h3>Olá, eu sou Lucilena Vogel, psicóloga clínica (CRP 12/25849).</h3>
+                    <h1>Olá, eu sou Lucilena, psicóloga clínica<br>(CRP 12/25849)</h1>
                     <p>
                         Sou formada em Psicologia e atuo com base na Terapia Cognitivo-Comportamental (TCC). Realizo atendimento psicológico online, o que me permite acompanhar pessoas de diferentes regiões, e também ofereço atendimentos presenciais em Blumenau-SC, respeitando
                         aquilo que faz mais sentido para cada pessoa.
@@ -410,7 +413,7 @@
             <div class="faq-container">
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Como sei se a terapia é para mim?</span>
                         <span class="faq-icon">+</span>
                     </div>
@@ -422,20 +425,19 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Como funciona a primeira consulta?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <p>
-                            A primeira consulta é um momento de acolhimento, no qual conversaremos sobre suas expectativas, dificuldades e objetivos para a terapia. Também é uma oportunidade para você conhecer meu método de trabalho e avaliar se se sente confortável para iniciar
-                            o processo terapêutico.
+                            A primeira consulta é um momento de acolhimento, no qual conversaremos sobre suas expectativas, dificuldades e objetivos para a terapia. Também é uma oportunidade para você conhecer meu método de trabalho e avaliar se se sente confortável para iniciar o processo terapêutico.
                         </p>
                     </div>
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>A terapia online funciona?</span>
                         <span class="faq-icon">+</span>
                     </div>
@@ -447,7 +449,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Quanto tempo dura o processo terapêutico?</span>
                         <span class="faq-icon">+</span>
                     </div>
@@ -459,7 +461,7 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Preciso ter um diagnóstico para fazer terapia?</span>
                         <span class="faq-icon">+</span>
                     </div>
@@ -471,14 +473,13 @@
                 </div>
 
                 <div class="faq-item">
-                    <div class="faq-question" onclick="toggleFAQ(this)">
+                    <div class="faq-question">
                         <span>Como é garantido o sigilo profissional?</span>
                         <span class="faq-icon">+</span>
                     </div>
                     <div class="faq-answer">
                         <p>
-                            O sigilo é um dos pilares fundamentais da psicologia. Tudo o que é compartilhado nas sessões é estritamente confidencial, conforme o Código de Ética Profissional do Psicólogo. Seu processo terapêutico é protegido, respeitado e realizado com tecnologia
-                            criptografada.
+                            O sigilo é um dos pilares fundamentais da psicologia. Tudo o que é compartilhado nas sessões é estritamente confidencial, conforme o Código de Ética Profissional do Psicólogo.
                         </p>
                     </div>
                 </div>
@@ -563,7 +564,7 @@
                 <p>Acompanhe conteúdos sobre saúde mental e bem-estar</p>
             </a>
 
-            <a href="https://wa.link/s099k9" target="_blank" class="contact-card">
+            <a href="https://wa.me/5547991586284?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20com%20a%20psic%C3%B3loga%20Lucilena%20Vogel." target="_blank" rel="noopener noreferrer" class="contact-card" data-whatsapp-link>
                 <div class="contact-icon whatsapp">
                     <i class="fa-brands fa-whatsapp"></i>
                 </div>
@@ -571,37 +572,6 @@
                 <h3>WhatsApp</h3>
                 <p>Contato rápido e direto para agendamentos</p>
             </a>
-        </div>
-
-        <div class="contact-form-container">
-            <h3>Envie uma mensagem</h3>
-            <p class="form-subtitle">Preencha o formulário abaixo e retornarei em breve</p>
-
-            <form id="contactForm" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Nome completo *</label>
-                    <input type="text" id="name" name="name" required placeholder="Seu nome">
-                </div>
-
-                <div class="form-group">
-                    <label for="email">E-mail *</label>
-                    <input type="email" id="email" name="email" required placeholder="seu@email.com">
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Telefone</label>
-                    <input type="tel" id="phone" name="phone" required placeholder="(00) 00000-0000">
-                </div>
-
-                <div class="form-group">
-                    <label for="message">Mensagem *</label>
-                    <textarea id="message" name="message" required placeholder="Escreva sua mensagem aqui..."></textarea>
-                </div>
-
-                <button type="submit" class="btn-submit">Enviar mensagem</button>
-
-                <div id="formMessage" class="form-message"></div>
-            </form>
         </div>
 
         </div>

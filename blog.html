@@ -95,18 +95,31 @@
             gap: 30px;
         }
         .post-card {
-            background: var(--white);
-            border-radius: 20px;
-            padding: 36px 40px;
-            box-shadow: 0 6px 30px var(--shadow);
+            background: linear-gradient(180deg, rgba(255,255,255,0.96) 0%, rgba(239,247,255,0.96) 100%);
+            border-radius: 24px;
+            padding: 0;
+            box-shadow: 0 14px 40px rgba(19, 48, 88, 0.09);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             text-decoration: none;
             color: inherit;
             display: block;
+            overflow: hidden;
+            border: 1px solid rgba(27, 94, 168, 0.08);
+            backdrop-filter: blur(8px);
         }
         .post-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+            box-shadow: 0 20px 48px rgba(19, 48, 88, 0.14);
+        }
+        .post-cover {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            background: #edf5ff;
+        }
+        .post-card-body {
+            padding: 30px 30px 26px;
         }
         .post-meta {
             font-size: 0.82rem;
@@ -150,6 +163,15 @@
             margin: 0 auto;
             padding: 120px 30px 100px;
         }
+
+        .article-shell {
+            background: rgba(255,255,255,0.6);
+            border: 1px solid rgba(30,110,199,0.08);
+            border-radius: 28px;
+            padding: 30px 26px;
+            box-shadow: 0 18px 48px rgba(25, 61, 111, 0.06);
+            backdrop-filter: blur(7px);
+        }
         .article-back {
             display: inline-flex;
             align-items: center;
@@ -182,12 +204,32 @@
             border-top: 2px solid var(--accent);
             margin-bottom: 40px;
         }
+        .article-cover {
+            width: 100%;
+            max-height: 420px;
+            object-fit: cover;
+            border-radius: 22px;
+            margin-bottom: 30px;
+            box-shadow: 0 18px 42px rgba(19, 48, 88, 0.12);
+            border: 1px solid rgba(27, 94, 168, 0.08);
+        }
         .article-body {
             font-size: 1.07rem;
             color: var(--text);
             line-height: 1.9;
         }
         .article-body p { margin-bottom: 24px; }
+        .article-body img,
+        .article-body figure img {
+            max-width: 100%;
+            border-radius: 18px;
+            margin: 24px auto;
+            display: block;
+            box-shadow: 0 14px 34px rgba(19, 48, 88, 0.12);
+        }
+        .article-body figure {
+            margin: 30px 0;
+        }
         .article-body h2, .article-body h3 {
             font-family: 'Cormorant Garamond', serif;
             color: var(--primary-dark);
@@ -320,6 +362,14 @@
             return `${parseInt(d)} de ${months[parseInt(m)-1]} de ${y}`;
         }
 
+        function extractFirstImage(html) {
+            if (!html) return null;
+            const temp = document.createElement('div');
+            temp.innerHTML = html;
+            const img = temp.querySelector('img');
+            return img ? img.getAttribute('src') : null;
+        }
+
         // Extrai texto puro do HTML do artigo para meta description
         function stripHtml(html) {
             const tmp = document.createElement('div');
@@ -381,10 +431,13 @@
 
             const cards = posts.map(p => `
                 <a href="/blog/${p.slug}" class="post-card" onclick="handleBlogNav(event,'${p.slug}')">
-                    <div class="post-meta">${formatDate(p.date)}</div>
-                    <h2>${p.title}</h2>
-                    <p>${p.excerpt}</p>
-                    <span class="post-link">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                    ${p.image ? `<img class="post-cover" src="${p.image}" alt="${p.title}" loading="lazy">` : ''}
+                    <div class="post-card-body">
+                        <div class="post-meta">${formatDate(p.date)}</div>
+                        <h2>${p.title}</h2>
+                        <p>${p.excerpt}</p>
+                        <span class="post-link">Ler artigo <i class="fa-solid fa-arrow-right"></i></span>
+                    </div>
                 </a>`).join('');
 
             main.innerHTML = `
@@ -398,6 +451,7 @@
         function renderArticle(post) {
             const url = `${BASE_URL}/blog/${post.slug}`;
             const plainText = stripHtml(post.content);
+            const coverImage = post.image || extractFirstImage(post.content);
             const desc = post.excerpt || plainText.slice(0, 155).trim() + '…';
 
             setMetaTags({
@@ -405,7 +459,7 @@
                 description: desc,
                 url,
                 type: 'article',
-                image: post.image || null
+                image: coverImage || null
             });
 
             // JSON-LD BlogPosting — usado pelo Google para rich results
@@ -431,7 +485,7 @@
                     }
                 },
                 mainEntityOfPage: { '@type': 'WebPage', '@id': url },
-                image: post.image || `${BASE_URL}/assets/logo/logo.png`,
+                image: coverImage || `${BASE_URL}/assets/logo/logo.png`,
                 articleBody: plainText
             });
 
@@ -443,6 +497,7 @@
                     </a>
                     <div class="article-meta">${formatDate(post.date)}${post.author ? ' · ' + post.author : ''}</div>
                     <h1 class="article-title">${post.title}</h1>
+                    ${coverImage ? `<img class="article-cover" src="${coverImage}" alt="${post.title}" loading="eager">` : ''}
                     <hr class="article-divider">
                     <div class="article-body">${post.content}</div>
                 </div>`;

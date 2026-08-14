@@ -1,6 +1,31 @@
+const WHATSAPP_NUMBER = '5547991586284';
+const WHATSAPP_MESSAGE = encodeURIComponent('Olá, gostaria de agendar uma sessão com a psicóloga Lucilena Vogel.');
+const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+
+function syncWhatsAppLinks() {
+    document.querySelectorAll('[data-whatsapp-link]').forEach((link) => {
+        link.href = WHATSAPP_URL;
+        link.setAttribute('target', '_blank');
+        link.setAttribute('rel', 'noopener noreferrer');
+    });
+
+    if (!document.querySelector('.whatsapp-float')) {
+        const floatButton = document.createElement('a');
+        floatButton.className = 'whatsapp-float';
+        floatButton.href = WHATSAPP_URL;
+        floatButton.target = '_blank';
+        floatButton.rel = 'noopener noreferrer';
+        floatButton.setAttribute('aria-label', 'Falar no WhatsApp');
+        floatButton.innerHTML = '<i class="fa-brands fa-whatsapp"></i>';
+        document.body.appendChild(floatButton);
+    }
+}
+
 // Toggle FAQ
 function toggleFAQ(element) {
-    const faqItem = element.parentElement;
+    const faqItem = element.closest('.faq-item');
+    if (!faqItem) return;
+
     const allFaqItems = document.querySelectorAll('.faq-item');
 
     allFaqItems.forEach(item => {
@@ -77,8 +102,8 @@ async function handleSubmit(event) {
 function toggleMenu() {
     const navLinks = document.getElementById('navLinks');
     const menuToggle = document.querySelector('.menu-toggle');
-    navLinks.classList.toggle('active');
-    menuToggle.classList.toggle('active');
+    if (navLinks) navLinks.classList.toggle('active');
+    if (menuToggle) menuToggle.classList.toggle('active');
 }
 
 function closeMenu() {
@@ -119,9 +144,8 @@ function updatePageTitle(path) {
 }
 
 function handleNavClick(event, path) {
-    // Blog é página separada — deixa o href funcionar normalmente
     if (path === '/blog' || path.startsWith('/blog/')) {
-        return; // não chama preventDefault
+        return;
     }
 
     event.preventDefault();
@@ -146,7 +170,48 @@ window.addEventListener('popstate', () => {
     navigateTo(window.location.pathname || '/');
 });
 
+if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+}
+
+window.addEventListener('pageshow', function() {
+    window.scrollTo(0, 0);
+});
+
 document.addEventListener('DOMContentLoaded', function() {
+    window.scrollTo(0, 0);
+    syncWhatsAppLinks();
+
+    document.addEventListener('click', function(event) {
+        const question = event.target.closest('.faq-question');
+        if (question) {
+            toggleFAQ(question);
+        }
+
+        const item = event.target.closest('.faq-item');
+        if (item && !question && !event.target.closest('.faq-answer')) {
+            const firstQuestion = item.querySelector('.faq-question');
+            if (firstQuestion) toggleFAQ(firstQuestion);
+        }
+    });
+
+    const revealItems = document.querySelectorAll('.section, .about-content, .faq-item, .contact-card, .method-card, .contact-form-container');
+    revealItems.forEach((item, index) => {
+        item.classList.add('reveal');
+        item.style.transitionDelay = `${index * 80}ms`;
+    });
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+
+    revealItems.forEach((item) => revealObserver.observe(item));
+
     const yearEl = document.getElementById('year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
