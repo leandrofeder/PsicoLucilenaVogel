@@ -640,12 +640,6 @@ ul {
     .testimonials-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
-    .testimonials-grid .testimonial-card:last-child {
-        grid-column: 1 / -1;
-        max-width: 50%;
-        margin-inline: auto;
-    }
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
